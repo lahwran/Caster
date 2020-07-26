@@ -265,6 +265,8 @@ def _get_defaults():
                 str(Path(_USER_DIR).joinpath("settings/companion_config.toml")),
             "DLL_PATH":
                 str(Path(_BASE_PATH).joinpath("lib/dll/")),
+            "USER_DLL_PATH":
+                str(Path(_USER_DIR).joinpath("data/dll/")),
             "GDEF_FILE":
                 str(Path(_USER_DIR).joinpath("transformers/words.txt")),
             "LOG_PATH":
@@ -484,7 +486,7 @@ def initialize():
     _USER_DIR = user_data_dir(appname="caster", appauthor=False)
     _SETTINGS_PATH = str(Path(_USER_DIR).joinpath("settings/settings.toml"))
 
-    for directory in ["data", "rules", "transformers", "hooks", "sikuli", "settings"]:
+    for directory in ["data", "data\dll", "rules", "transformers", "hooks", "sikuli", "settings"]:
         d = Path(_USER_DIR).joinpath(directory)
         d.mkdir(parents=True, exist_ok=True)
     # Kick everything off.
