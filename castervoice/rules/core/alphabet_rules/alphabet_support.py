@@ -5,6 +5,16 @@ from castervoice.lib.actions import Key, Text
 
 def caster_alphabet():
     return {
+        "onejit": "1",
+        "twojit": "2",
+        "threejit": "3",
+        "forjit": "4",
+        "fivejit": "5",
+        "sixjit": "6",
+        "sevenjit": "7",
+        "eightjit": "8",
+        "ninejit": "9",
+        "zerojit": "0",
         "arch"    : "a",
         "brov"    : "b",
         "char"    : "c",

@@ -118,6 +118,7 @@ class GrammarManager(object):
         # do not load or watch invalid rules
         invalidation = self._get_invalidation(rule_class, details)
         if invalidation is not None:
+            print("invalidated by something or other")
             printer.out(invalidation)
             return
 

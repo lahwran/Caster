@@ -1,3 +1,6 @@
+from __future__ import print_function
+import subprocess
+
 from dragonfly import Function, Repeat, Dictation, Choice, ContextAction
 from castervoice.lib.context import AppContext
 
@@ -40,52 +43,152 @@ for key, value in _dtpd.items():
         raise Exception(msg.format(str(value)))
 
 
+def rotate_display(angle):
+    subprocess.call(["C:\\Users\\Lauren\\Downloads\\display\\display64.exe", "/rotate", angle or "0"])
+
+
+
+def change_resolution(offset=1):
+    screen = tuple(win32_get())
+    available = win32_get_modes()
+    if screen not in available:
+        new = available[0]
+    else:
+        index = available.index(screen)
+
+        new = available[max(min(len(available)-1, index+offset), 0)]
+    #print("current resolution is: ", screen, new, available)
+    win32_set(new[0], new[1])
+def resolution_down(nnavi3):
+    change_resolution(nnavi3 or 1)
+def resolution_up(nnavi3):
+    change_resolution(-(nnavi3 or 1))
+
+def win32_get_modes():
+    '''
+    Get the primary windows display width and height
+    '''
+    import win32api
+    from pywintypes import DEVMODEType, error
+    modes = []
+    i = 0
+    try:
+        while True:
+            mode = win32api.EnumDisplaySettings(None, i)
+            modes.append((
+                int(mode.PelsWidth),
+                int(mode.PelsHeight),
+                int(mode.BitsPerPel),
+                ))
+            i += 1
+    except error:
+        pass
+
+    by_size = sorted(modes, key=lambda x: x[0]*x[1])
+    max_width, max_height, max_depth = by_size[-1]
+    results = []
+    seen = set()
+    for width, height, depth in by_size:
+        ratios = [width/float(max_width), height/float(max_height)]
+        distortion = max(ratios)/min(ratios)
+        #print("resolution: %s,%s,%s distortion: %s" % (width,height,depth,distortion))
+        result = (width,height,distortion)
+        if result in seen:
+            continue
+        seen.add(result)
+        results.append(result)
+    results = sorted(results, key=lambda x: (int(10*x[2]), -x[0]*x[1]))[:6]
+    return [x[:-1] for x in results]
+
+
+
+
+def win32_get():
+    '''
+    Get the primary windows display width and height
+    '''
+    import ctypes
+    user32 = ctypes.windll.user32
+    screensize = (
+        user32.GetSystemMetrics(0),
+        user32.GetSystemMetrics(1),
+        )
+    return screensize
+
+def win32_set(width=None, height=None, depth=32):
+    '''
+    Set the primary windows display to the specified mode
+    '''
+    # Gave up on ctypes, the struct is really complicated
+    #user32.ChangeDisplaySettingsW(None, 0)
+    import win32api
+    from pywintypes import DEVMODEType
+    if width and height:
+
+        if not depth:
+            depth = 32
+
+        mode = win32api.EnumDisplaySettings()
+        mode.PelsWidth = width
+        mode.PelsHeight = height
+        mode.BitsPerPel = depth
+
+        win32api.ChangeDisplaySettings(mode, 0)
+    else:
+        win32api.ChangeDisplaySettings(None, 0)
+
 class Navigation(MergeRule):
     pronunciation = "navigation"
 
     mapping = {
+        "resolution down [<nnavi3>]":
+            R(Function(resolution_down), rspec="rotate"),
+        "resolution up [<nnavi3>]":
+            R(Function(resolution_up), rspec="rotate"),
+        "display rotate [<angle>]":
+            R(Function(rotate_display), rspec="rotate"),
         # "periodic" repeats whatever comes next at 1-second intervals until "terminate"
         # or "escape" (or your SymbolSpecs.CANCEL) is spoken or 100 tries occur
-        "periodic":
-            ContextSeeker(forward=[
-                L(
-                    S(["cancel"], lambda: None),
-                    S(["*"],
-                      lambda fnparams: UntilCancelled(
-                          Mimic(*filter(lambda s: s != "periodic", fnparams)), 1).execute(
-                          ),
-                      use_spoken=True))
-            ]),
+        # "periodic":
+        #     ContextSeeker(forward=[
+        #         L(
+        #             S(["cancel"], lambda: None),
+        #             S(["*"],
+        #               lambda fnparams: UntilCancelled(
+        #                   Mimic(*filter(lambda s: s != "periodic", fnparams)), 1).execute(
+        #                   ),
+        #               use_spoken=True))
+        #     ]),
         # VoiceCoder-inspired -- these should be done at the IDE level
-        "fill <target>":
-            R(Key("escape, escape, end"), show=False) +
-            AsynchronousAction([L(S(["cancel"], Function(context.fill_within_line)))],
-            time_in_seconds=0.2, repetitions=50 ),
-        "jump in":
-            AsynchronousAction([L(S(["cancel"], context.nav, ["right", "(~[~{~<"]))],
-                               time_in_seconds=0.1,
-                               repetitions=50),
-        "jump out":
-            AsynchronousAction([L(S(["cancel"], context.nav, ["right", ")~]~}~>"]))],
-                               time_in_seconds=0.1,
-                               repetitions=50),
-        "jump back":
-            AsynchronousAction([L(S(["cancel"], context.nav, ["left", "(~[~{~<"]))],
-                               time_in_seconds=0.1,
-                               repetitions=50),
-        "jump back in":
-            AsynchronousAction([L(S(["cancel"], context.nav, ["left", "(~[~{~<"]))],
-                               finisher=Key("right"),
-                               time_in_seconds=0.1,
-                               repetitions=50),
+        # "fill <target>":
+        #     R(Key("escape, escape, end"), show=False) +
+        #     AsynchronousAction([L(S(["cancel"], Function(context.fill_within_line)))],
+        #     time_in_seconds=0.2, repetitions=50 ),
+        # "jump in":
+        #     AsynchronousAction([L(S(["cancel"], context.nav, ["right", "(~[~{~<"]))],
+        #                        time_in_seconds=0.1,
+        #                        repetitions=50),
+        # "jump out":
+        #     AsynchronousAction([L(S(["cancel"], context.nav, ["right", ")~]~}~>"]))],
+        #                        time_in_seconds=0.1,
+        #                        repetitions=50),
+        # "jump back":
+        #     AsynchronousAction([L(S(["cancel"], context.nav, ["left", "(~[~{~<"]))],
+        #                        time_in_seconds=0.1,
+        #                        repetitions=50),
+        # "jump back in":
+        #     AsynchronousAction([L(S(["cancel"], context.nav, ["left", "(~[~{~<"]))],
+        #                        finisher=Key("right"),
+        #                        time_in_seconds=0.1,
+        #                        repetitions=50),
 
         # keyboard shortcuts
-        'save':
-            R(Key("c-s"), rspec="save"),
+        # 'etave':
+        #     R(Key("c-s"), rspec="save"),
         'shock [<nnavi50>]':
             R(Key("enter"), rspec="shock")*Repeat(extra="nnavi50"),
         # "(<mtn_dir> | <mtn_mode> [<mtn_dir>]) [(<nnavi500> | <extreme>)]":
-        #     R(Function(text_utils.master_text_nav)), # this is now implemented below
+        #     R(Function(text_utils.master_text_v)), # this is now implemented below
         "shift click":
             R(Key("shift:down") + Mouse("left") + Key("shift:up")),
         "stoosh [<nnavi500>]":
@@ -104,14 +207,14 @@ class Navigation(MergeRule):
             R(Key("escape"), rspec="cancel"),
         "shackle":
             R(Key("home/5, s-end"), rspec="shackle"),
-        "(tell | tau) <semi>":
-            R(Function(navigation.next_line), rspec="tell dock"),
-        "(hark | heart) <semi>":
-            R(Function(navigation.previous_line), rspec="hark dock"),
+        # "(tell | tau) <semi>":
+        #     R(Function(navigation.next_line), rspec="tell dock"),
+        # "(hark | heart) <semi>":
+        #     R(Function(navigation.previous_line), rspec="hark dock"),
         "duple [<nnavi50>]":
             R(Function(navigation.duple_keep_clipboard), rspec="duple"),
-        "Kraken":
-            R(Key("c-space"), rspec="Kraken"),
+        # "Kraken":
+        #     R(Key("c-space"), rspec="Kraken"),
         "undo [<nnavi10>]":
             R(Key("c-z"))*Repeat(extra="nnavi10"),
         "redo [<nnavi10>]":
@@ -123,20 +226,20 @@ class Navigation(MergeRule):
                               ])),
 
         # text formatting
-        "set [<big>] format (<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]":
-            R(Function(textformat.set_text_format)),
-        "clear castervoice [<big>] formatting":
-            R(Function(textformat.clear_text_format)),
-        "peek [<big>] format":
-            R(Function(textformat.peek_text_format)),
-        "(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)] <textnv> [brunt]":
+        # "set [<big>] format (<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]":
+        #     R(Function(textformat.set_text_format)),
+        # "clear castervoice [<big>] formatting":
+        #     R(Function(textformat.clear_text_format)),
+        # "peek [<big>] format":
+        #     R(Function(textformat.peek_text_format)),
+        "(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)] [the] <textnv> [brunt]":
             R(Function(textformat.master_format_text)),
-        "[<big>] format <textnv>":
-            R(Function(textformat.prior_text_format)),
-        "<word_limit> [<big>] format <textnv>":
-            R(Function(textformat.partial_format_text)),
-        "hug <enclosure>":
-            R(Function(text_utils.enclose_selected)),
+        #"[<big>] format <textnv>":
+        #    R(Function(textformat.prior_text_format)),
+        #"<word_limit> [<big>] format <textnv>":
+        #    R(Function(textformat.partial_format_text)),
+        # "hug <enclosure>":
+        #     R(Function(text_utils.enclose_selected)),
         "dredge [<nnavi10>]":
             R(Key("alt:down, tab/20:%(nnavi10)d, alt:up"),
               rdescript="Core: switch to most recent Windows"),
@@ -285,25 +388,30 @@ class Navigation(MergeRule):
         Choice("combined_button_dictionary", combined_button_dictionary),
 
         Choice("capitalization", {
-            "yell": 1,
-            "tie": 2,
-            "gerrish": 3,
-            "sing": 4,
-            "laws": 5,
-            "say": 6,
-            "cop": 7,
-            "slip": 8,
+            "capitalize": 1, # THISISATEST
+            "camelcaps": 2, # ThisIsATest
+            "camelcase": 3, # thisIsATest
+            #"caps": 4,
+            "laws": 5, # thisisatest
+            "dragon say": 6, # this is a test
+            "single caps": 7, #This is a test
+            "(dragon slip|lowercase)": 8, #this is a test
+            "spongebob": 9,  # this is a test
         }),
         Choice(
             "spacing", {
-                "gum": 1,
+                "(gaps|gapsis)": -1, # this is a test of default, THIS IS A TEST OF YELLING
+                "gum": 1, # thisisatest
                 "gun": 1,
-                "spine": 2,
-                "snake": 3,
+                "spine": 2, # this-Is-A-Test
+                "snake": 3, # This_Is_A_Test
                 "pebble": 4,
-                "incline": 5,
-                "dissent": 6,
-                "descent": 6,
+                "cobble": 9, # this::is::a::test::THIS::IS::A::TEST::this::is::a::test::
+                "cobblestone": 8,
+                #"incline": 5,
+                #"dissent": 6,
+                #"descent": 6,
+                "dunder": 7,
             }),
         Choice("semi", tell_commands_dict),
         Choice("word_limit", {
@@ -321,6 +429,11 @@ class Navigation(MergeRule):
         }),
         Choice("extreme", {
             "Wally": "way",
+        })  ,      Choice("angle", {
+            "ninety": "90",
+            "minus ninety": "270",
+            "two [hundred] seventy": "270",
+            "zero": "0"
         }),
         Choice("big", {
             "big": True,

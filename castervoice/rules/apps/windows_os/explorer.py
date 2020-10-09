@@ -11,17 +11,17 @@ class IERule(MappingRule):
     mapping = {
         "address bar":
             R(Key("a-d")),
-        "new folder":
+        "new (folder|directory)":
             R(Key("cs-n")),
         "new file":
             R(Key("a-f, w, t")),
         "(show | file | folder) properties":
             R(Key("a-enter")),
-        "get up":
+        "(get|go) up":
             R(Key("a-up")),
-        "get back":
+        "(get|go) back":
             R(Key("a-left")),
-        "get forward":
+        "(get|go) forward":
             R(Key("a-right")),
         "search [<text>]":
             R(Key("a-d, tab:1") + Text("%(text)s")),

@@ -1,5 +1,7 @@
 from dragonfly import Mimic, Function, MappingRule
+from castervoice.lib.const import CCRType
 
+from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.actions import Key, Text
 
 from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
@@ -12,7 +14,8 @@ def _apply(n):
         Text("stash@{" + str(int(n)) + "}").execute()
 
 
-class GitBashRule(MappingRule):
+class GitBashRule(MergeRule):
+    pronunciation = "git bash"
     GIT_ADD_ALL = "g, i, t, space, a, d, d, space, minus, A"
     GIT_COMMIT = "g, i, t, space, c, o, m, m, i, t, space, minus, m, space, quote, quote, left"
     mapping = {
@@ -38,10 +41,16 @@ class GitBashRule(MappingRule):
             R(Text("git checkout ")),
         "(git|get) branch":
             R(Text("git branch ")),
+        "(git|get) reset":
+            R(Text("git reset ")),
+        "(git|get) diff":
+            R(Text("git diff ")),
         "(git|get) remote":
             R(Text("git remote ")),
         "(git|get) merge":
             R(Text("git merge ")),
+        "(git|get) rebase":
+            R(Text("git rebase ")),
         "(git|get) merge tool":
             R(Text("git mergetool")),
         "(git|get) fetch":
@@ -113,13 +122,11 @@ _executables = [
     "\\cmd.exe",
     "\\mintty.exe",
     "\\powershell.exe",
-    "idea",
-    "idea64",
-    "studio64",
-    "pycharm"
+    "idea", "idea64", "studio64", "pycharm", "rider64", "clion64","Terminus.exe"
 ]
 
 
 def get_rule():
-    return GitBashRule, RuleDetails(name="git bash", executable=_executables)
+    return GitBashRule, RuleDetails(executable=_executables,
+                ccrtype=CCRType.APP)
 

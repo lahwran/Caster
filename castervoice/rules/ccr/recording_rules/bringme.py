@@ -137,7 +137,10 @@ class BringRule(BaseSelfModifyingRule):
                     printer.out("Selection for bring me not found ")
             Key("escape").execute()
         if not path:
-            # logger.warn('Cannot add %s as %s to bringme: cannot get path', launch, key)
+            import dragonfly;
+            message = 'Cannot add %s as %s to bring me: cannot get path' % (launch_type, key)
+            printer.out(message)
+            dragonfly.get_current_engine().speak(message)
             return
 
         config_copy = self._config.get_copy()

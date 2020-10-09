@@ -4,6 +4,7 @@ from castervoice.lib import settings
 from castervoice.lib.actions import Text
 
 
+
 class TextFormat():
     '''
     Represents text formatting (capitalization and spacing) rules
@@ -38,15 +39,18 @@ class TextFormat():
                 t = t[0].lower() + t.title()[1:]
             elif capitalization == 4:
                 t = t.capitalize()
-            elif capitalization == 5:
+            elif capitalization in [5, 8]:
                 t = t.lower()
             elif capitalization == 6:
                 pass
             elif capitalization == 7:
-                t = t[0].upper() + t[1:]
-            elif capitalization == 8:
-                t = t[0].lower() + t[1:]
-        if spacing != 0:
+                t = t[0].upper() + t[1:].lower()
+            elif capitalization == 9:
+                t = "".join([(x if index % 2 == 0 else x.upper()) for index, x in enumerate(t)])
+        if spacing in [0, -1]:
+            t = t if t.endswith(' ') else t + " "
+        else:
+            t = t.replace(" '","").replace("'", "")
             if spacing == 1:
                 t = "".join(t.split(" "))
             elif spacing == 2:
@@ -59,19 +63,28 @@ class TextFormat():
                 t = "/".join(t.split(" "))
             elif spacing == 6:
                 t = "\\".join(t.split(" "))
+            elif spacing == 7:
+                t = "__" + "_".join(t.split(" ")) + "__"
+            elif spacing == 8:
+                t = "::".join(t.split(" "))
+            elif spacing == 9:
+                t = "::".join(t.split(" ") + [""])
         return t
 
     @classmethod
     def get_text_format_description(cls, capitalization, spacing):
-        caps = {0: "<none>", 1: "yell", 2: "tie", 3: "gerrish", 4: "sing", 5: "laws", 6: "say", 7: "cop", 8: "slip"}
+        caps = {0: "<none>", 1: "capitalize", 2: "camel caps", 3: "camel case", 4: "single caps", 5: "laws", 6: "say", 7: "lowercase", 8: "slip"}
         spaces = {
+            -1: "gaps",
             0: "<none>",
             1: "gum",
             2: "spine",
             3: "snake",
             4: "pebble",
             5: "incline",
-            6: "descent"
+            6: "descent",
+            7: "dunder",
+            9: "cobble"
         }
         if capitalization == 0 and spacing == 0:
             return "<none>"
@@ -83,7 +96,7 @@ class TextFormat():
     def normalize_text_format(cls, capitalization, spacing):
         if capitalization == 0:
             capitalization = 5
-        if spacing == 0 and capitalization == 3:
+        if spacing == 0 and capitalization < 6:
             spacing = 1
         return (capitalization, spacing)
 
@@ -142,4 +155,9 @@ def prior_text_format(big, textnv):
 
 def master_format_text(capitalization, spacing, textnv):
     capitalization, spacing = TextFormat.normalize_text_format(capitalization, spacing)
+    Text(TextFormat.formatted_text(capitalization, spacing, str(textnv))).execute()
+
+
+def nonccr_format_text(capitalization, textnv):
+    capitalization, spacing = TextFormat.normalize_text_format(capitalization, 0)
     Text(TextFormat.formatted_text(capitalization, spacing, str(textnv))).execute()

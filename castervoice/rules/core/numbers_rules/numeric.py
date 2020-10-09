@@ -7,7 +7,7 @@ except ImportError:
     
 from castervoice.lib.const import CCRType
 from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
-from castervoice.lib.merge.additions import IntegerRefST
+from castervoice.lib.merge.additions import IntegerRefST, IntegerRef
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.state.short import R
 
@@ -24,7 +24,7 @@ class Numbers(MergeRule):
 
     extras = [
         IntegerRefST("wn", 0, 10),
-        IntegerRefST("wnKK", 0, 1000000),
+        IntegerRef("wnKK", 0, 10000000),
     ]
     defaults = {}
 

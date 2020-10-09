@@ -348,20 +348,14 @@ Divide screen into grid of 3 x 3 squares and assign each one a number.
     with one of the numbers from 1 to 9.
 '''
 class SudokuGrid(TkTransparent):
-    def __init__(self, grid_size=None, square_size=32):
+    def __init__(self, grid_size=None, square_size=20):
         TkTransparent.__init__(self, settings.SUDOKU_TITLE, grid_size)
 
         screen_w = self.dimensions.width
         screen_h = self.dimensions.height
 
         self.square_width = square_size
-        while (screen_w % self.square_width != 0):
-            self.square_width -= 1
-
         self.square_height = square_size
-        while (screen_h % self.square_height != 0):
-            self.square_height -= 1
-
         self.width = int(screen_w / self.square_width)
         self.height = int(screen_h / self.square_height)
         self.num_squares = self.width * self.height

@@ -1,3 +1,4 @@
+#rotate to your frequency prior for the next down sample
 # -*- coding: utf-8 -*-
 '''
 master_text_nav shouldn't take strings as arguments - it should take ints, so it can be language-agnostic

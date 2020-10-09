@@ -1,4 +1,5 @@
 from dragonfly import Repeat, Pause, Function, Choice, MappingRule
+from castervoice.lib.const import CCRType
 
 from castervoice.lib.actions import Key, Mouse, Text
 
@@ -8,8 +9,10 @@ from castervoice.lib.merge.state.short import R
 
 from castervoice.lib import github_automation
 from castervoice.lib.temporary import Store, Retrieve
+from castervoice.lib.merge.mergerule import MergeRule
 
-class ChromeRule(MappingRule):
+class ChromeRule(MergeRule):
+    pronunciation = "chrome"
     mapping = {
         "(new window|win new)":
             R(Key("c-n")),
@@ -48,8 +51,6 @@ class ChromeRule(MappingRule):
         # requires an extension in some browsers such as chrome
         "[toggle] caret browsing":
             R(Key("f7")),
-        "[go] home [page]":
-            R(Key("a-home")),
         "[show] history":
             R(Key("c-h")),
         "address bar":
@@ -86,7 +87,7 @@ class ChromeRule(MappingRule):
             R(Key("s-escape")),
         "(clear history|clear browsing data)":
             R(Key("cs-del")),
-        "[show] developer tools":
+        "(dev|developer) tools":
             R(Key("cs-i")),
         "checkout [this] pull request [locally]":
             R(Function(github_automation.github_checkoutupdate_pull_request, new=True)),
@@ -110,6 +111,12 @@ class ChromeRule(MappingRule):
             R(Key("a-n")),
         "allow notification":
             R(Key("as-a")),
+        "chrome tab detach":
+            R(Key("c-l/20,c-x,c-w/20,c-n/20,c-v/5,enter")),
+        "chrome tab cut":
+            R(Key("c-l/20,c-x,c-w/20")),
+        "chrome tab paste":
+            R(Key("c-t/20,c-v/5,enter")),
         "deny notification":
             R(Key("as-a")),
         "google that":
@@ -140,4 +147,5 @@ class ChromeRule(MappingRule):
 
 
 def get_rule():
-    return ChromeRule, RuleDetails(name="google chrome", executable="chrome")
+    return ChromeRule, RuleDetails(executable="chrome",
+                                   ccrtype=CCRType.APP)

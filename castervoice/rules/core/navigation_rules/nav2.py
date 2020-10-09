@@ -3,6 +3,7 @@ from dragonfly import Function, Repeat, Dictation, Choice, MappingRule
 from castervoice.lib.actions import Key, Mouse
 from castervoice.lib import navigation, utilities
 from castervoice.rules.core.navigation_rules import navigation_support
+from castervoice.lib import textformat
 
 try:  # Try first loading from caster user directory
     from alphabet_rules import alphabet_support
@@ -74,7 +75,7 @@ class NavigationNon(MappingRule):
             R(Key("c-x")),
         "sure spark":
             R(Key("c-v")),
-        "refresh":
+        "(reload|refresh)":
             R(Key("c-r")),
         "maxiwin":
             R(Key("w-up")),
@@ -100,14 +101,17 @@ class NavigationNon(MappingRule):
             R(Key("c-w/20"))*Repeat(extra="n"),
         "elite translation <text>":
             R(Function(alphabet_support.elite_text)),
+        "<capitalization> <textnv>":
+            R(Function(textformat.nonccr_format_text)),
     }
 
     extras = [
         Dictation("text"),
+        Dictation("textnv"),
         Dictation("mim"),
         IntegerRefST("function_key", 1, 13),
         IntegerRefST("n", 1, 50),
-        IntegerRefST("nnavi500", 1, 500),
+        IntegerRefST("nnavi500", 1, 5000),
         Choice("time_in_seconds", {
             "super slow": 5,
             "slow": 2,
@@ -121,6 +125,11 @@ class NavigationNon(MappingRule):
         Choice("dokick", {
             "kick": 1,
             "psychic": 2
+        }),
+        Choice("capitalization", {
+            "say": 6,
+            "cop": 7,
+            "slip": 8,
         }),
         Choice("wm", {
             "ex": 1,
