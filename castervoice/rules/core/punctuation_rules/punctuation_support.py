@@ -27,7 +27,7 @@ def text_punc_dict():
 
     _id = _inv_dtpb()
     return {
-        "ace":                                                " ",
+        "space":                                                " ",
         "clamor":                                             "!",
         "(chocky|double quote)":                                            "\"",
         "hash tag":                                           "#",
