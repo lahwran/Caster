@@ -14,27 +14,23 @@ from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.state.short import R
 
 
-class Punctuation(MergeRule):
+class Punctuation(MergeRule): #
     pronunciation = "punctuation"
 
     mapping = {
-        "[<long>] <text_punc> [<npunc>]":
-            R(Text("%(long)s" + "%(text_punc)s" + "%(long)s"))*Repeat(extra="npunc"),
+        "[<long>] <text_punc>":
+            R(Text("%(long)s" + "%(text_punc)s" + "%(long)s")),
         # For some reason, this one doesn't work through the other function
-        "[<long>] backslash [<npunc>]":
-            R(Text("%(long)s" + "\\" + "%(long)s"))*Repeat(extra="npunc"),
+        "[<long>] backslash":
+            R(Text("%(long)s" + "\\" + "%(long)s")),
         "<double_text_punc> [<npunc>]":
             R(Text("%(double_text_punc)s") + Key("left"))*Repeat(extra="npunc"),
         "tabby [<npunc>]":
             R(Key("tab"))*Repeat(extra="npunc"),
         "(back | shin) tabby [<npunc>]":
             R(Key("s-tab"))*Repeat(extra="npunc"),
-        "boom [<npunc>]":
-            R(Text(", "))*Repeat(extra="npunc"),
-        "bam [<npunc>]":
-            R(Text(". "))*Repeat(extra="npunc"),
-        "ace [<npunc100>]":
-            R(Text(" "))*Repeat(extra="npunc100"),
+        "space":
+            R(Text(" ")),
     }
 
     extras = [
