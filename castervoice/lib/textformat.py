@@ -48,7 +48,7 @@ class TextFormat():
             elif capitalization == 9:
                 t = "".join([(x if index % 2 == 0 else x.upper()) for index, x in enumerate(t)])
         if spacing in [0, -1]:
-            t = t if t.endswith(' ') else t + " "
+            t = t.replace('point', ' point').strip()+" "
         else:
             t = t.replace(" '","").replace("'", "")
             if spacing == 1:
