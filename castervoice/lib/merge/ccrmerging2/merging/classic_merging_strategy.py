@@ -1,7 +1,6 @@
-from castervoice.lib.merge.ccrmerging2.merging.base_merging_strategy import BaseMergingStrategy
+from __future__ import print_function
 
-
-class ClassicMergingStrategy(BaseMergingStrategy):
+class ClassicMergingStrategy(object):
     """
     This strategy KOs any incompatible rules.
     """
@@ -35,6 +34,7 @@ class ClassicMergingStrategy(BaseMergingStrategy):
                 incompat_index = indices_map[incompat_rcn]
                 if incompat_index > rule_index:
                     ko = True
+                    print("disabling", compat_result.rule_class_name(), "because of", incompat_rcn)
                     break
             if not ko:
                 if merged_rule is None:
