@@ -3,7 +3,6 @@ from dragonfly import Function
 from castervoice.lib import settings, context
 from castervoice.lib.actions import Text
 from castervoice.lib.merge.selfmod.selfmodrule import BaseSelfModifyingRule
-from castervoice.asynch.hmc import h_launch
 from castervoice.lib.merge.state.actions import AsynchronousAction
 from castervoice.lib.merge.state.actions2 import NullAction
 from castervoice.lib.merge.state.short import R, S, L
@@ -57,15 +56,6 @@ class BaseAliasRule(BaseSelfModifyingRule):
         if text is not None:
             if spec:
                 self._refresh(spec, str(text))
-            else:
-                h_launch.launch(settings.QTYPE_INSTRUCTIONS, data="Enter_spec_for_command|")
-                on_complete = AsynchronousAction.hmc_complete(
-                    lambda data: self._refresh(data[0].replace("\n", ""), text))
-                AsynchronousAction(
-                    [L(S(["cancel"], on_complete))],
-                    time_in_seconds=0.5,
-                    repetitions=300,
-                    blocking=False).execute()
 
     def _delete_all(self):
         self._config.replace({})

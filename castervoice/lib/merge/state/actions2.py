@@ -1,6 +1,5 @@
 from dragonfly.actions.action_function import Function
 
-from castervoice.asynch.hmc import h_launch
 from castervoice.lib import settings, utilities
 from castervoice.lib.merge.state.actions import AsynchronousAction, \
     RegisteredAction

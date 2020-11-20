@@ -3,7 +3,6 @@ from dragonfly.actions.action_base import Repeat
 from dragonfly.actions.action_function import Function
 from dragonfly.actions.action_playback import Playback
 
-from castervoice.asynch.hmc import h_launch
 from castervoice.lib import settings
 
 from castervoice.lib.const import CCRType

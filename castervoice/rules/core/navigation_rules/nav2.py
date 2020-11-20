@@ -99,8 +99,6 @@ class NavigationNon(MappingRule):
             R(Key("c-pgup"))*Repeat(extra="n"),
         "close tab [<n>]":
             R(Key("c-w/20"))*Repeat(extra="n"),
-        "elite translation <text>":
-            R(Function(alphabet_support.elite_text)),
         "<capitalization> <textnv>":
             R(Function(textformat.nonccr_format_text)),
     }
