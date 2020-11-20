@@ -199,11 +199,11 @@ class Navigation(MergeRule):
             R(Function(navigation.drop_keep_clipboard), rspec="spark"),
         "splat [<splatdir>] [<nnavi10>]":
             R(Key("c-%(splatdir)s"), rspec="splat")*Repeat(extra="nnavi10"),
-        "(deli|delete) [<nnavi50>]":
+        "deli [<nnavi50>]":
             R(Key("del/5"), rspec="deli")*Repeat(extra="nnavi50"),
-        "(clear|backspace) [<nnavi50>]":
+        "clear [<nnavi50>]":
             R(Key("backspace/5:%(nnavi50)d"), rspec="clear"),
-        SymbolSpecs.CANCEL: #
+        SymbolSpecs.CANCEL:
             R(Key("escape"), rspec="cancel"),
         "shackle":
             R(Key("home/5, s-end"), rspec="shackle"),
@@ -318,6 +318,8 @@ class Navigation(MergeRule):
         "(F{}".format(i) + " | function {})".format(i) : "f{}".format(i)
         for i in range(1, 13)
     }
+    button_dictionary_10.update(caster_alphabet())
+    button_dictionary_10.update(_tpd)
     longhand_punctuation_names = {
         "minus": "hyphen",
         "hyphen": "hyphen",
@@ -327,6 +329,7 @@ class Navigation(MergeRule):
         "slash": "slash",
         "backslash": "backslash"
     }
+    button_dictionary_10.update(longhand_punctuation_names)
     button_dictionary_1 = {
         "(home | lease wally | latch)": "home",
         "(end | ross wally | ratch)": "end",
@@ -342,9 +345,6 @@ class Navigation(MergeRule):
         "eight": "8",
         "nine": "9"
     }
-    button_dictionary_10.update(caster_alphabet())
-    button_dictionary_10.update(longhand_punctuation_names)
-    button_dictionary_10.update(_tpd)
     combined_button_dictionary = {}
     for dictionary in [button_dictionary_1, button_dictionary_10, button_dictionary_500]:
         combined_button_dictionary.update(dictionary)
@@ -353,7 +353,7 @@ class Navigation(MergeRule):
             "(control | fly)": "c-", #TODO: make DRY
             "(shift | shin)": "s-",
             "alt": "a-",
-            "control shift": "cs-",
+            "(control shift | queue)": "cs-",
             "control alt": "ca-",
             "(shift alt | alt shift)": "sa-",
             "(control alt shift | control shift alt)": "csa-",  # control must go first
@@ -429,8 +429,7 @@ class Navigation(MergeRule):
         }),
         Choice("extreme", {
             "Wally": "way",
-        })  ,
-        Choice("angle", {
+        })  ,      Choice("angle", {
             "ninety": "90",
             "minus ninety": "270",
             "two [hundred] seventy": "270",
