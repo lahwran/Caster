@@ -18,22 +18,22 @@ class Punctuation(MergeRule):
     pronunciation = "punctuation"
 
     mapping = {
-        "[<long>] <text_punc> [<npunc>]":
+        "[<long>] <text_punc> [repeat <npunc>]":
             R(Text("%(long)s" + "%(text_punc)s" + "%(long)s"))*Repeat(extra="npunc"),
         # For some reason, this one doesn't work through the other function
-        "[<long>] backslash [<npunc>]":
+        "[<long>] backslash [repeat <npunc>]":
             R(Text("%(long)s" + "\\" + "%(long)s"))*Repeat(extra="npunc"),
-        "<double_text_punc> [<npunc>]":
+        "<double_text_punc> [repeat <npunc>]":
             R(Text("%(double_text_punc)s") + Key("left"))*Repeat(extra="npunc"),
-        "tabby [<npunc>]":
+        "tabby [repeat <npunc>]":
             R(Key("tab"))*Repeat(extra="npunc"),
-        "(back | shin) tabby [<npunc>]":
+        "(back | shin) tabby [repeat <npunc>]":
             R(Key("s-tab"))*Repeat(extra="npunc"),
-        "boom [<npunc>]":
+        "boom [repeat <npunc>]":
             R(Text(", "))*Repeat(extra="npunc"),
-        "bam [<npunc>]":
+        "bam [repeat <npunc>]":
             R(Text(". "))*Repeat(extra="npunc"),
-        "ace [<npunc100>]":
+        "ace [repeat <npunc100>]":
             R(Text(" "))*Repeat(extra="npunc100"),
     }
 

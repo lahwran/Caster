@@ -185,23 +185,23 @@ class Navigation(MergeRule):
         # keyboard shortcuts
         # 'etave':
         #     R(Key("c-s"), rspec="save"),
-        'shock [<nnavi50>]':
+        'shock [repeat <nnavi50>]':
             R(Key("enter"), rspec="shock")*Repeat(extra="nnavi50"),
         # "(<mtn_dir> | <mtn_mode> [<mtn_dir>]) [(<nnavi500> | <extreme>)]":
         #     R(Function(text_utils.master_text_v)), # this is now implemented below
         "shift click":
             R(Key("shift:down") + Mouse("left") + Key("shift:up")),
-        "stoosh [<nnavi500>]":
+        "stoosh [repeat <nnavi500>]":
             R(Function(navigation.stoosh_keep_clipboard), rspec="stoosh"),
-        "cut [<nnavi500>]":
+        "cut [repeat <nnavi500>]":
             R(Function(navigation.cut_keep_clipboard), rspec="cut"),
-        "spark [<nnavi500>] [(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]]":
+        "spark [repeat <nnavi500>] [(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]]":
             R(Function(navigation.drop_keep_clipboard), rspec="spark"),
-        "splat [<splatdir>] [<nnavi10>]":
+        "splat [<splatdir>] [repeat <nnavi10>]":
             R(Key("c-%(splatdir)s"), rspec="splat")*Repeat(extra="nnavi10"),
-        "deli [<nnavi50>]":
+        "deli [repeat <nnavi50>]":
             R(Key("del/5"), rspec="deli")*Repeat(extra="nnavi50"),
-        "clear [<nnavi50>]":
+        "clear [repeat <nnavi50>]":
             R(Key("backspace/5:%(nnavi50)d"), rspec="clear"),
         SymbolSpecs.CANCEL:
             R(Key("escape"), rspec="cancel"),
@@ -215,9 +215,9 @@ class Navigation(MergeRule):
             R(Function(navigation.duple_keep_clipboard), rspec="duple"),
         # "Kraken":
         #     R(Key("c-space"), rspec="Kraken"),
-        "undo [<nnavi10>]":
+        "undo [repeat <nnavi10>]":
             R(Key("c-z"))*Repeat(extra="nnavi10"),
-        "redo [<nnavi10>]":
+        "redo [repeat <nnavi10>]":
             R(
                 ContextAction(default=Key("c-y")*Repeat(extra="nnavi10"),
                               actions=[
@@ -232,7 +232,7 @@ class Navigation(MergeRule):
         #     R(Function(textformat.clear_text_format)),
         # "peek [<big>] format":
         #     R(Function(textformat.peek_text_format)),
-        "(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)] [the] <textnv> [brunt]":
+        "(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)] <textnv> [brunt]":
             R(Function(textformat.master_format_text)),
         #"[<big>] format <textnv>":
         #    R(Function(textformat.prior_text_format)),
@@ -245,8 +245,8 @@ class Navigation(MergeRule):
               rdescript="Core: switch to most recent Windows"),
 
         # Ccr Mouse Commands
-        "kick [<nnavi3>]":
-            R(Function(navigation.left_click))*Repeat(extra="nnavi3"),
+        "kick [<nnavi10>]":
+            R(Function(navigation.left_click))*Repeat(extra="nnavi10"),
         "psychic":
             R(Function(navigation.right_click)),
         "(kick double|double kick)":
@@ -257,32 +257,20 @@ class Navigation(MergeRule):
             R(Function(navigation.left_up)),
 
         # keystroke commands
-        "<direction> [<nnavi500>]":
+        "<direction> [repeat <nnavi500>]":
             R(Key("%(direction)s")*Repeat(extra='nnavi500'), rdescript="arrow keys"),
-        "(lease wally | latch) [<nnavi10>]":
+        "(lease wally | latch) [repeat <nnavi10>]":
             R(Key("home:%(nnavi10)s")),
-        "(ross wally | ratch) [<nnavi10>]":
+        "(ross wally | ratch) [repeat <nnavi10>]":
             R(Key("end:%(nnavi10)s")),
-        "sauce wally [<nnavi10>]":
+        "sauce wally [repeat <nnavi10>]":
             R(Key("c-home:%(nnavi10)s")),
-        "dunce wally [<nnavi10>]":
+        "dunce wally [repeat <nnavi10>]":
             R(Key("c-end:%(nnavi10)s")),
-        "bird [<nnavi500>]":
-            R(Key("c-left:%(nnavi500)s")),
-        "firch [<nnavi500>]":
-            R(Key("c-right:%(nnavi500)s")),
-        "brick [<nnavi500>]":
-            R(Key("s-left:%(nnavi500)s")),
-        "frick [<nnavi500>]":
-            R(Key("s-right:%(nnavi500)s")),
-        "blitch [<nnavi500>]":
-            R(Key("cs-left:%(nnavi500)s")),
-        "flitch [<nnavi500>]":
-            R(Key("cs-right:%(nnavi500)s")),
-        "<modifier> <button_dictionary_500> [<nnavi500>]":
+        "<modifier> <button_dictionary_500> [repeat <nnavi500>]":
             R(Key("%(modifier)s%(button_dictionary_500)s")*Repeat(extra='nnavi500'),
               rdescript="press modifier keys plus buttons from button_dictionary_500"),
-        "<modifier> <button_dictionary_10> [<nnavi10>]":
+        "<modifier> <button_dictionary_10> [repeat <nnavi10>]":
             R(Key("%(modifier)s%(button_dictionary_10)s")*Repeat(extra='nnavi10'),
               rdescript="press modifier keys plus buttons from button_dictionary_10"),
         "<modifier> <button_dictionary_1>":
@@ -400,7 +388,7 @@ class Navigation(MergeRule):
         }),
         Choice(
             "spacing", {
-                "(gaps|gapsis)": -1, # this is a test of default, THIS IS A TEST OF YELLING
+                "(gaps|gapsa)": -1, # this is a test of default, THIS IS A TEST OF YELLING
                 "gum": 1, # thisisatest
                 "gun": 1,
                 "spine": 2, # this-Is-A-Test
