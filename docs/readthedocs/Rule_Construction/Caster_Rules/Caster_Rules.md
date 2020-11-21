@@ -17,7 +17,7 @@ A Caster MergeRule is very similar to a Dragonfly MappingRule, but it has a few 
 ```Python
 from dragonfly import MappingRule, Key
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 
 class MyMappingRule(MappingRule):
   mapping = {
@@ -33,7 +33,7 @@ def get_rule():
 ```python
 from dragonfly import Key, Choice
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.const import CCRType
 
@@ -77,7 +77,7 @@ The simplest is `RegisteredAction`. (Type aliased to `R` for short.) `R` can wra
 ```Python
 from dragonfly import Text
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.const import CCRType
 
@@ -104,7 +104,7 @@ Two things of note here.
 ```Python
 from dragonfly import Text
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.const import CCRType
 
@@ -129,7 +129,7 @@ In order to do this, the ContextSeeker constructor takes one or both of two arra
 ```Python
 from dragonfly import Text, Key
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.const import CCRType
 
@@ -169,7 +169,7 @@ ContextSeekers can also look forward. Let's look at an example of a forward-look
 ```Python
 from dragonfly import Text
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.const import CCRType
 
@@ -215,7 +215,7 @@ That's a lot, so let's see it in action.
 ```Python
 from dragonfly import Text
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.const import CCRType
 
@@ -263,7 +263,7 @@ Let's look at a few basic AsynchronousActions:
 ```Python
 from dragonfly import Key
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.const import CCRType
 

@@ -5,7 +5,7 @@ try: # Try first loading from caster user directory
 except ImportError: 
     from castervoice.rules.apps.editor.eclipse_rules.eclipse_support import ec_con
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.const import CCRType
 from castervoice.lib.merge.additions import IntegerRefST, Boolean

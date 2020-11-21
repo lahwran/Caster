@@ -2,7 +2,7 @@ from dragonfly import Dictation, Repeat, MappingRule
 from castervoice.lib.const import CCRType
 
 from castervoice.lib.actions import Text, Key
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.short import R
 from castervoice.lib.merge.mergerule import MergeRule
@@ -52,6 +52,7 @@ class JetbrainsRule(MergeRule):
         ## "find %s [match] [<n>]" % BACK: R(Key("s-enter")) * Repeat(extra="n"),
         "jetbrains replace": R(Key("c-r/%s" % DELAY)),
         "find all": R(Key("cs-f/%s" % DELAY)),
+        "replace all": R(Key("cs-r/%s" % DELAY)),
         ## "replace [in] (all|files)": R(Key("cs-r")),
         "go <n>": R(Text("%(n)sG")),
         ## "implement (%s|%s)" % (method, methods): R(Key("c-i")),
@@ -87,6 +88,7 @@ class JetbrainsRule(MergeRule):
         ## refactoring
         #"refactor": R(Key("cas-t")),
         "refactor rename": R(Key("s-f6")),
+        "refactor move": R(Key("f6")),
         "refactor inline": R(Key("ca-n")),
         "refactor extract": R(Key("ca-m")),
         "refactor %s [variable|var]" % extract: R(Key("ca-v")),

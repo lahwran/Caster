@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 
 
 class TestRuleDetails(TestCase):

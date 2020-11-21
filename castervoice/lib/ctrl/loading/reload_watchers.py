@@ -63,7 +63,7 @@ class BaseReloadObservable(object):
         return md5_hasher.hexdigest()
 from dragonfly import Function, MappingRule
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 
 
 class ManualReloadObservable(BaseReloadObservable):

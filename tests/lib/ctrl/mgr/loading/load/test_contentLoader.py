@@ -1,9 +1,9 @@
 from mock import Mock
 
-from castervoice.lib.ctrl.mgr.loading.load import content_loader
-from castervoice.lib.ctrl.mgr.loading.load.content_request_generator import ContentRequestGenerator
-from castervoice.lib.ctrl.mgr.loading.load.content_type import ContentType
-from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
+from castervoice.lib.ctrl.loading.load import content_loader
+from castervoice.lib.ctrl.loading.load.content_request_generator import ContentRequestGenerator
+from castervoice.lib.ctrl.loading.load.content_type import ContentType
+from castervoice.lib.ctrl.rules_config import RulesConfig
 from tests.test_util import utilities_mocking, printer_mocking
 from tests.test_util.settings_mocking import SettingsEnabledTestCase
 

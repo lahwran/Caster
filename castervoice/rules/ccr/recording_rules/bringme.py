@@ -18,7 +18,7 @@ from castervoice.lib import settings, utilities, context, contexts
 from castervoice.lib import printer
 from castervoice.lib.actions import Text, Key
 from castervoice.lib.const import CCRType
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.selfmod.selfmodrule import BaseSelfModifyingRule
 from castervoice.lib.merge.state.short import R
 

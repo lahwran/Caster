@@ -1,5 +1,5 @@
 from castervoice.lib import printer
-from castervoice.lib.ctrl.mgr.errors import DontUseBaseClassError
+from castervoice.lib.ctrl.errors import DontUseBaseClassError
 from castervoice.lib.merge.ccrmerging2.pronounceable import Pronounceable
 
 

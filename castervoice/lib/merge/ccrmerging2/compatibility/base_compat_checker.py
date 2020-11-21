@@ -1,4 +1,4 @@
-from castervoice.lib.ctrl.mgr.errors import DontUseBaseClassError
+from castervoice.lib.ctrl.errors import DontUseBaseClassError
 
 
 class BaseCompatibilityChecker(object):

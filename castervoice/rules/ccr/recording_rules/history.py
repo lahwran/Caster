@@ -6,7 +6,7 @@ from dragonfly.actions.action_playback import Playback
 from castervoice.lib import settings
 
 from castervoice.lib.const import CCRType
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.selfmod.selfmodrule import BaseSelfModifyingRule
 from castervoice.lib.merge.state.actions import AsynchronousAction
 from castervoice.lib.merge.state.actions2 import NullAction

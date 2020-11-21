@@ -1,7 +1,7 @@
 from castervoice.lib.actions import Key
 from castervoice.lib import settings, printer
 from castervoice.lib.const import CCRType
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.context import AppContext
 
 from castervoice.lib.merge.mergerule import MergeRule

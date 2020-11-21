@@ -3,7 +3,7 @@ import collections
 from dragonfly import Function, MappingRule
 
 from castervoice.lib import available_commands_tracker, printer
-from castervoice.lib.ctrl.mgr.rule_formatter import _set_rdescripts
+from castervoice.lib.ctrl.rule_formatter import _set_rdescripts
 from castervoice.lib.merge.ccrmerging2.pronounceable import Pronounceable
 
 

@@ -1,7 +1,7 @@
 from dragonfly.grammar.elements import Dictation
 
 from castervoice.lib import printer
-from castervoice.lib.ctrl.mgr.errors import DontUseBaseClassError
+from castervoice.lib.ctrl.errors import DontUseBaseClassError
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.selfmod.sm_config import SelfModStateSavingConfig

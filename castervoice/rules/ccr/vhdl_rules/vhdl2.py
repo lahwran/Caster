@@ -10,7 +10,7 @@ except ImportError:
     from castervoice.rules.ccr.vhdl_rules.vhdl_support import for_generate_string, if_generate_string, process_string, \
         case_string, component_declaration_string, component_string, architecture_string, entity_string
 
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.state.short import R
 
 

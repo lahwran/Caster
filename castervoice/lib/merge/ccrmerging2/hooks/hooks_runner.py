@@ -2,7 +2,7 @@ from dragonfly import Function, MappingRule
 import traceback
 
 from castervoice.lib import printer
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.ccrmerging2.activation_rule_generator import ActivationRuleGenerator
 from castervoice.lib import settings
 from castervoice.lib.merge.state.short import R

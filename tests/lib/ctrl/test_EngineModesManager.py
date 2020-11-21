@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from castervoice.lib.ctrl.mgr.engine_manager import EngineModesManager
+from castervoice.lib.ctrl.engine_manager import EngineModesManager
 
 class TestEngineModesManager(TestCase):
     _Manager = EngineModesManager()

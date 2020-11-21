@@ -1,6 +1,6 @@
 from mock import Mock
 
-from castervoice.lib.ctrl.mgr.loading.load.initial_content import FullContentSet
+from castervoice.lib.ctrl.loading.load.initial_content import FullContentSet
 from tests.test_util import settings_mocking
 from tests.test_util.settings_mocking import SettingsEnabledTestCase
 
@@ -24,7 +24,7 @@ class TestGrammarManager(SettingsEnabledTestCase):
 
     def _setup_rules_config_file(self, loadable_true=[], enabled=[]):
         from castervoice.lib import utilities
-        from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
+        from castervoice.lib.ctrl.rules_config import RulesConfig
         self._setup_config_file(utilities,
                                 ["paths", "RULES_CONFIG_PATH"],
                                 TestGrammarManager._MOCK_PATH_RULES_CONFIG,
@@ -53,13 +53,13 @@ class TestGrammarManager(SettingsEnabledTestCase):
         from castervoice.lib import utilities
 
         # do most imports here so that nothing imports and initializes settings
-        from castervoice.lib.ctrl.mgr.ccr_toggle import CCRToggle
-        from castervoice.lib.ctrl.mgr.companion.companion_config import CompanionConfig
-        from castervoice.lib.ctrl.mgr.grammar_activator import GrammarActivator
-        from castervoice.lib.ctrl.mgr.grammar_manager import GrammarManager
-        from castervoice.lib.ctrl.mgr.loading.reload.manual_reload_observable import ManualReloadObservable
-        from castervoice.lib.ctrl.mgr.rule_maker.mapping_rule_maker import MappingRuleMaker
-        from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
+        from castervoice.lib.ctrl.ccr_toggle import CCRToggle
+        from castervoice.lib.ctrl.companion.companion_config import CompanionConfig
+        from castervoice.lib.ctrl.grammar_activator import GrammarActivator
+        from castervoice.lib.ctrl.grammar_manager import GrammarManager
+        from castervoice.lib.ctrl.loading.reload.manual_reload_observable import ManualReloadObservable
+        from castervoice.lib.ctrl.rule_maker.mapping_rule_maker import MappingRuleMaker
+        from castervoice.lib.ctrl.rules_config import RulesConfig
         from castervoice.lib.ctrl.nexus import Nexus
         from castervoice.lib.merge.ccrmerging2.hooks.hooks_config import HooksConfig
         from castervoice.lib.merge.ccrmerging2.hooks.hooks_runner import HooksRunner
@@ -67,7 +67,7 @@ class TestGrammarManager(SettingsEnabledTestCase):
         from castervoice.lib.merge.ccrmerging2.transformers.transformers_runner import TransformersRunner
         from castervoice.lib.merge.mergerule import MergeRule
         from castervoice.lib.merge.selfmod.smr_configurer import SelfModRuleConfigurer
-        from tests.lib.ctrl.mgr.grammar_container.fake_grammar_container import FakeGrammarContainer
+        from tests.lib.ctrl.grammar_container.fake_grammar_container import FakeGrammarContainer
 
         self._setup_config_file(utilities,
                                 ["paths", "RULES_CONFIG_PATH"],
@@ -158,7 +158,7 @@ class TestGrammarManager(SettingsEnabledTestCase):
 
     def test_enable_rule_causes_a_save(self):
         from castervoice.lib import utilities
-        from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
+        from castervoice.lib.ctrl.rules_config import RulesConfig
         from castervoice.rules.core.alphabet_rules import alphabet
         from castervoice.rules.core.punctuation_rules import punctuation
 
@@ -181,7 +181,7 @@ class TestGrammarManager(SettingsEnabledTestCase):
 
     def test_enable_incompatible_rule_knockout_is_saved(self):
         from castervoice.lib import utilities
-        from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
+        from castervoice.lib.ctrl.rules_config import RulesConfig
         from castervoice.rules.ccr.java_rules import java
         from castervoice.rules.ccr.python_rules import python
 
@@ -204,7 +204,7 @@ class TestGrammarManager(SettingsEnabledTestCase):
 
     def test_knockout_with_companions_saves_correctly(self):
         from castervoice.lib import utilities
-        from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
+        from castervoice.lib.ctrl.rules_config import RulesConfig
         from castervoice.rules.ccr.java_rules import java
         from castervoice.rules.ccr.java_rules import java2
         from castervoice.rules.ccr.python_rules import python
@@ -255,7 +255,7 @@ class TestGrammarManager(SettingsEnabledTestCase):
 
     def test_internal_rules_dont_create_duplicates(self):
         from castervoice.lib import utilities
-        from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
+        from castervoice.lib.ctrl.rules_config import RulesConfig
         from castervoice.rules.core.alphabet_rules import alphabet
 
         # "write" the rules.toml file:
@@ -280,7 +280,7 @@ class TestGrammarManager(SettingsEnabledTestCase):
         self.assertEqual(1, enabled_ordered.count("ManualGrammarReloadRule"))
 
     def test_disable_non_enabled_doesnt_crash(self):
-        from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
+        from castervoice.lib.ctrl.rules_config import RulesConfig
         from castervoice.rules.ccr.java_rules import java
         from castervoice.rules.ccr.python_rules import python
 

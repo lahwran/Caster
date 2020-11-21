@@ -6,7 +6,7 @@ except ImportError:
     from castervoice.rules.core.numbers_rules.numeric_support import word_number, numbers2
     
 from castervoice.lib.const import CCRType
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST, IntegerRef
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.state.short import R

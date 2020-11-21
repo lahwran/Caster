@@ -9,7 +9,7 @@ except ImportError:
 
 from castervoice.rules.core.alphabet_rules import alphabet_support # Manually change import path if in user directory.
 from castervoice.lib.merge.additions import IntegerRefST, Boolean
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.state.short import R
 
 

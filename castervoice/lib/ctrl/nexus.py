@@ -1,13 +1,13 @@
-from castervoice.lib.ctrl.mgr.basic_grammar_container import BasicGrammarContainer
-from castervoice.lib.ctrl.mgr.ccr_toggle import CCRToggle
-from castervoice.lib.ctrl.mgr.grammar_activator import GrammarActivator
-from castervoice.lib.ctrl.mgr.loading.reload_watchers import ManualReloadObservable, TimerReloadObservable
-from castervoice.lib.ctrl.mgr.mapping_rule_maker import MappingRuleMaker
-from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
-from castervoice.lib.ctrl.mgr.validation.combo import ComboValidationDelegator
-from castervoice.lib.ctrl.mgr.validation.combo import RuleNonEmptyValidator
-from castervoice.lib.ctrl.mgr.validation.combo import RuleFamilyValidator
-from castervoice.lib.ctrl.mgr.validation.combo import TreeRuleValidator
+from castervoice.lib.ctrl.basic_grammar_container import BasicGrammarContainer
+from castervoice.lib.ctrl.ccr_toggle import CCRToggle
+from castervoice.lib.ctrl.grammar_activator import GrammarActivator
+from castervoice.lib.ctrl.loading.reload_watchers import ManualReloadObservable, TimerReloadObservable
+from castervoice.lib.ctrl.mapping_rule_maker import MappingRuleMaker
+from castervoice.lib.ctrl.rules_config import RulesConfig
+from castervoice.lib.ctrl.validation.combo import ComboValidationDelegator
+from castervoice.lib.ctrl.validation.combo import RuleNonEmptyValidator
+from castervoice.lib.ctrl.validation.combo import RuleFamilyValidator
+from castervoice.lib.ctrl.validation.combo import TreeRuleValidator
 from castervoice.lib.merge.ccrmerging2.compatibility.simple_compat_checker import SimpleCompatibilityChecker
 from castervoice.lib.merge.ccrmerging2.hooks.hooks_config import HooksConfig
 from castervoice.lib.merge.ccrmerging2.hooks.hooks_runner import HooksRunner
@@ -16,23 +16,23 @@ from castervoice.lib.merge.ccrmerging2.transformers.transformers_config import T
 from castervoice.lib.merge.ccrmerging2.transformers.transformers_runner import TransformersRunner
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib import settings
-from castervoice.lib.ctrl.mgr.validation.details import AppCCRDetailsValidator
-from castervoice.lib.ctrl.mgr.validation.details import CCRDetailsValidator
-from castervoice.lib.ctrl.mgr.validation.details import DetailsValidationDelegator
-from castervoice.lib.ctrl.mgr.validation.details import NonCCRDetailsValidator
-from castervoice.lib.ctrl.mgr.validation.rules import IsMergeRuleValidator
-from castervoice.lib.ctrl.mgr.validation.rules import NotTreeRuleValidator
-from castervoice.lib.ctrl.mgr.validation.rules import CCRSelfModifyingRuleValidator
+from castervoice.lib.ctrl.validation.details import AppCCRDetailsValidator
+from castervoice.lib.ctrl.validation.details import CCRDetailsValidator
+from castervoice.lib.ctrl.validation.details import DetailsValidationDelegator
+from castervoice.lib.ctrl.validation.details import NonCCRDetailsValidator
+from castervoice.lib.ctrl.validation.rules import IsMergeRuleValidator
+from castervoice.lib.ctrl.validation.rules import NotTreeRuleValidator
+from castervoice.lib.ctrl.validation.rules import CCRSelfModifyingRuleValidator
 from castervoice.lib.merge.communication import Communicator
 from castervoice.lib.merge.selfmod.smr_configurer import SelfModRuleConfigurer
 from castervoice.lib.merge.state.stack import CasterState
-from castervoice.lib.ctrl.mgr.grammar_manager import GrammarManager
-from castervoice.lib.ctrl.mgr.validation.rules import CCRRuleValidationDelegator
+from castervoice.lib.ctrl.grammar_manager import GrammarManager
+from castervoice.lib.ctrl.validation.rules import CCRRuleValidationDelegator
 from castervoice.lib.merge.ccrmerging2.ccrmerger2 import CCRMerger2
 from castervoice.lib.merge.ccrmerging2.merging.classic_merging_strategy import ClassicMergingStrategy
-from castervoice.lib.ctrl.mgr.engine_manager import EngineModesManager
+from castervoice.lib.ctrl.engine_manager import EngineModesManager
 
-from castervoice.lib.config.config_toml import TomlConfig
+from castervoice.lib.config_toml import TomlConfig
 
 
 class CompanionConfig(TomlConfig):

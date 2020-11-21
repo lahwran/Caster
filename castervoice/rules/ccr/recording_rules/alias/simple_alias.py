@@ -1,6 +1,6 @@
 from castervoice.lib import settings
 from castervoice.rules.ccr.recording_rules.alias.base_alias import BaseAliasRule
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 
 
 

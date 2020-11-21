@@ -1,6 +1,6 @@
 from castervoice.lib.actions import Text
 from castervoice.lib.const import CCRType
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.selfmod.tree_rule.tree_node import TreeNode
 from castervoice.lib.merge.selfmod.tree_rule.tree_rule import TreeRule
 from castervoice.lib.merge.state.actions2 import NullAction

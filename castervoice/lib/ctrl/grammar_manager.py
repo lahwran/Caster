@@ -3,12 +3,12 @@ import os, traceback
 from dragonfly import Grammar
 
 from castervoice.lib import printer
-from castervoice.lib.ctrl.mgr.errors import InvalidCompanionConfigurationError
-from castervoice.lib.ctrl.mgr.errors import NotAModuleError
-from castervoice.lib.ctrl.mgr.loading.content_request_generator import ContentType
-from castervoice.lib.ctrl.mgr.managed_rule import ManagedRule
-from castervoice.lib.ctrl.mgr.rule_formatter import _set_rdescripts
-from castervoice.lib.ctrl.mgr.rules_enabled_diff import RulesEnabledDiff
+from castervoice.lib.ctrl.errors import InvalidCompanionConfigurationError
+from castervoice.lib.ctrl.errors import NotAModuleError
+from castervoice.lib.ctrl.loading.content_request_generator import ContentType
+from castervoice.lib.ctrl.managed_rule import ManagedRule
+from castervoice.lib.ctrl.rule_formatter import _set_rdescripts
+from castervoice.lib.ctrl.rules_enabled_diff import RulesEnabledDiff
 from castervoice.lib.merge.ccrmerging2.hooks.events.activation_event import RuleActivationEvent
 from castervoice.lib.merge.ccrmerging2.hooks.events.on_error_event import OnErrorEvent
 from castervoice.lib.merge.ccrmerging2.sorting.config_ruleset_sorter import ConfigBasedRuleSetSorter

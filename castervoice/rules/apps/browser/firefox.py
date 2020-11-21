@@ -3,7 +3,7 @@ from dragonfly import Repeat, Pause, Function, Choice, MappingRule
 from castervoice.lib.actions import Key, Mouse, Text
 
 from castervoice.lib.merge.additions import IntegerRefST
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.state.short import R
 
 from castervoice.lib import github_automation

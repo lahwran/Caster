@@ -11,7 +11,7 @@ from dragonfly.actions.action_mouse import get_cursor_position
 from castervoice.lib.actions import Text, Key
 from castervoice.rules.core.navigation_rules.nav import Navigation  # Updated manually if in user directory
 from castervoice.lib.const import CCRType
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.state.short import R

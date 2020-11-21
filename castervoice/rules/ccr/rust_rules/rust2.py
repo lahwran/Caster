@@ -1,7 +1,7 @@
 from dragonfly import MappingRule, Choice
 
 from castervoice.lib.actions import Text, Key
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.state.short import R
 
 

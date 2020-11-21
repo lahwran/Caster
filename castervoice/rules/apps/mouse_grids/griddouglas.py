@@ -3,7 +3,7 @@ from dragonfly import Function, Choice, MappingRule
 from dragonfly.actions.mouse import get_cursor_position
 from castervoice.lib import control, navigation
 from castervoice.lib.actions import Mouse
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.short import R
 from castervoice.rules.ccr.standard import SymbolSpecs

@@ -1,5 +1,5 @@
 from castervoice.lib.actions import Key, Text
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.short import R
 from dragonfly import (Dictation, MappingRule, Repeat)

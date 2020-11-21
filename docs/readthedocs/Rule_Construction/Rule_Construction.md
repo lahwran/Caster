@@ -96,7 +96,7 @@ Based on the type of rule category as described in the above section, these are 
 **CCR App Rules / Global CCR Rules**
 
 ```python
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.const import CCRType
 ```
@@ -105,13 +105,13 @@ from castervoice.lib.const import CCRType
 
 ```python
 from dragonfly import MappingRule
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 ```
 
 **Self Modifying CCR Rules**
 
 ```python
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.selfmod.selfmodrule import BaseSelfModifyingRule
 from castervoice.lib.const import CCRType
 ```

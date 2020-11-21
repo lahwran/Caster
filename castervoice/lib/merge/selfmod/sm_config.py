@@ -1,5 +1,5 @@
 import copy
-from castervoice.lib.config.config_toml import TomlConfig
+from castervoice.lib.config_toml import TomlConfig
 
 
 class SelfModStateSavingConfig(TomlConfig):

@@ -4,7 +4,7 @@ import unittest
 
 from dragonfly import get_engine
 
-from castervoice.lib.ctrl.mgr.errors import GuidanceRejectionException
+from castervoice.lib.ctrl.errors import GuidanceRejectionException
 from castervoice.lib.util import guidance
 from tests.test_util import settings_mocking, utilities_mocking
 

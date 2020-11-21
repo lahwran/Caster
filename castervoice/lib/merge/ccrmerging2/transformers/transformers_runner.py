@@ -3,8 +3,8 @@ import traceback
 from dragonfly import Function, MappingRule
 
 from castervoice.lib import printer
-from castervoice.lib.ctrl.mgr.errors import InvalidTransformationError, ITMessage
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.errors import InvalidTransformationError, ITMessage
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.ccrmerging2.activation_rule_generator import ActivationRuleGenerator
 from castervoice.lib.merge.mergerule import MergeRule
 

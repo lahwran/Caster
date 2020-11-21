@@ -1,7 +1,7 @@
 from dragonfly import Key,MappingRule, Dictation, Choice,Text
 from castervoice.lib.merge.state.short import R
 from castervoice.lib.merge.additions import IntegerRef
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 
 class UnityRule(MappingRule):
 	mapping = {

@@ -7,7 +7,7 @@ them are that:
 3. transformers enforce immutability
 4. transformers have no concept of "time" or "order"
 '''
-from castervoice.lib.ctrl.mgr.errors import DontUseBaseClassError
+from castervoice.lib.ctrl.errors import DontUseBaseClassError
 from castervoice.lib.merge.ccrmerging2.pronounceable import Pronounceable
 
 

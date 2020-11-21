@@ -2,7 +2,7 @@ from dragonfly import Function, Dictation, Choice, MappingRule,Repeat
 
 from castervoice.lib import navigation
 from castervoice.lib.actions import Key, Text
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.short import R
 from castervoice.lib.temporary import Store, Retrieve

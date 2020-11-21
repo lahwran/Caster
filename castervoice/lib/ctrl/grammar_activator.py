@@ -1,7 +1,7 @@
 from dragonfly import MappingRule, Function
 
-from castervoice.lib.ctrl.mgr.errors import NoPronunciationError
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.errors import NoPronunciationError
+from castervoice.lib.ctrl.rule_details import RuleDetails
 
 
 class GrammarActivator(object):

@@ -10,7 +10,7 @@ from dragonfly import Pause, Function, Repeat, Dictation, Choice, MappingRule
 from castervoice.lib.actions import Text, Key
 
 from castervoice.lib import settings, navigation
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.short import R
 

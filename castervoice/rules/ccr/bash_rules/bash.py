@@ -5,7 +5,7 @@ Created on Sep 1, 2015
 from castervoice.lib.actions import Text, Key
 from castervoice.rules.ccr.standard import SymbolSpecs
 from castervoice.lib.const import CCRType
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.state.short import R
 

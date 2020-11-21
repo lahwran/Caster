@@ -5,7 +5,7 @@ from sys import modules as _MODULES
 from sys import path
 
 from castervoice.lib import settings, printer
-from castervoice.lib.ctrl.mgr.loading.content_request_generator import ContentType
+from castervoice.lib.ctrl.loading.content_request_generator import ContentType
 
 
 class ContentResult(object):

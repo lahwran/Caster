@@ -6,8 +6,8 @@ from castervoice.rules.apps.editor.vscode_rules.vscode import VSCodeCcrRule
 from castervoice.rules.core.alphabet_rules.alphabet import Alphabet
 from castervoice.rules.core.navigation_rules.nav import Navigation
 from castervoice.lib.const import CCRType
-from castervoice.lib.ctrl.mgr.managed_rule import ManagedRule
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.managed_rule import ManagedRule
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.ctrl.nexus import Nexus
 from castervoice.lib.merge.ccrmerging2.sorting.config_ruleset_sorter import ConfigBasedRuleSetSorter
 from castervoice.lib.merge.ccrmerging2.transformers.text_replacer.text_replacer import TextReplacerTransformer

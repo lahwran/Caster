@@ -1,6 +1,6 @@
 from dragonfly import Dictation, Repeat, Pause, MappingRule
 from castervoice.lib.actions import Text, Key, Mouse
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.short import R
 

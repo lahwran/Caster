@@ -1,7 +1,7 @@
 from dragonfly import Function, Playback, RecognitionHistory, MappingRule, get_current_engine
 
 from castervoice.lib import settings
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.state.actions import AsynchronousAction
 from castervoice.lib.merge.state.short import R, L, S

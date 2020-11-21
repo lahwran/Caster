@@ -4,7 +4,7 @@ from castervoice.lib import utilities
 from castervoice.lib import virtual_desktops
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.actions import Key
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.state.short import R
 
 

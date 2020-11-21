@@ -22,7 +22,7 @@ except ImportError:
     from castervoice.rules.core.punctuation_rules.punctuation_support import double_text_punc_dict, text_punc_dict
 
 from castervoice.lib.const import CCRType
-from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
+from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.state.actions import AsynchronousAction, ContextSeeker
