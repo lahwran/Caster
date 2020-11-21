@@ -5,8 +5,25 @@ from sys import modules as _MODULES
 from sys import path
 
 from castervoice.lib import settings, printer
-from castervoice.lib.ctrl.mgr.loading.load.content_type import ContentType
-from castervoice.lib.ctrl.mgr.loading.load.initial_content import FullContentSet
+from castervoice.lib.ctrl.mgr.loading.content_request_generator import ContentType
+
+
+class ContentResult(object):
+    def __init__(self, content_type, content_item):
+        """
+        :param content_type: a string indicating the type
+        :param content_item: a rule, transformer, or hook
+        """
+        self.content_type = content_type
+        self.content_item = content_item
+class FullContentSet(object):
+    """
+    Initial content, loaded once when Caster starts.
+    """
+    def __init__(self, rules, transformers, hooks):
+        self.rules = rules
+        self.transformers = transformers
+        self.hooks = hooks
 
 
 class ContentLoader(object):

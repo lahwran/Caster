@@ -3,9 +3,9 @@ import os, traceback
 from dragonfly import Grammar
 
 from castervoice.lib import printer
-from castervoice.lib.ctrl.mgr.errors.invalid_companion_configuration_error import InvalidCompanionConfigurationError
-from castervoice.lib.ctrl.mgr.errors.not_a_module import NotAModuleError
-from castervoice.lib.ctrl.mgr.loading.load.content_type import ContentType
+from castervoice.lib.ctrl.mgr.errors import InvalidCompanionConfigurationError
+from castervoice.lib.ctrl.mgr.errors import NotAModuleError
+from castervoice.lib.ctrl.mgr.loading.content_request_generator import ContentType
 from castervoice.lib.ctrl.mgr.managed_rule import ManagedRule
 from castervoice.lib.ctrl.mgr.rule_formatter import _set_rdescripts
 from castervoice.lib.ctrl.mgr.rules_enabled_diff import RulesEnabledDiff

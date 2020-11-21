@@ -1,4 +1,4 @@
-from castervoice.lib.ctrl.mgr.errors.base_class_error import DontUseBaseClassError
+from castervoice.lib.ctrl.mgr.errors import DontUseBaseClassError
 
 
 class ActivationRuleGenerator(object):

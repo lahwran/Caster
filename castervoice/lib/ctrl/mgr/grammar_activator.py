@@ -1,6 +1,6 @@
 from dragonfly import MappingRule, Function
 
-from castervoice.lib.ctrl.mgr.errors.no_pronunciation_error import NoPronunciationError
+from castervoice.lib.ctrl.mgr.errors import NoPronunciationError
 from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
 
 

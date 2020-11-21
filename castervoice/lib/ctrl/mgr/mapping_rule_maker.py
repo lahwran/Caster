@@ -1,9 +1,8 @@
 from dragonfly import Grammar, FuncContext
 from castervoice.lib.context import AppContext
-from castervoice.lib.ctrl.mgr.rule_maker.base_rule_maker import BaseRuleMaker
 
 
-class MappingRuleMaker(BaseRuleMaker):
+class MappingRuleMaker(object):
     """
     Creates a MappingRule instance from the rule's class and a RuleDetails
     object, then runs all transformers over it.

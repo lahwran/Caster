@@ -2,7 +2,7 @@ import os
 
 from dragonfly import Function
 from castervoice.lib import settings
-from castervoice.lib.ctrl.mgr.errors.tree_rule_config_error import TreeRuleConfigurationError
+from castervoice.lib.ctrl.mgr.errors import TreeRuleConfigurationError
 from castervoice.lib.ctrl.mgr.rule_formatter import _set_the_rdescript 
 from castervoice.lib.merge.ccrmerging2.hooks.events.node_change_event import NodeChangeEvent
 from castervoice.lib.merge.selfmod.selfmodrule import BaseSelfModifyingRule

@@ -1,7 +1,6 @@
-from castervoice.lib.ctrl.mgr.grammar_container.base_grammar_container import BaseGrammarContainer
 
 
-class BasicGrammarContainer(BaseGrammarContainer):
+class BasicGrammarContainer(object):
     """
     Responsible for holding and destroying
     CCR and non-CCR grammars.

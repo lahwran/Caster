@@ -1,10 +1,8 @@
-from castervoice.lib.ctrl.mgr.grammar_container.basic_grammar_container import BasicGrammarContainer
+from castervoice.lib.ctrl.mgr.basic_grammar_container import BasicGrammarContainer
 from castervoice.lib.ctrl.mgr.ccr_toggle import CCRToggle
-from castervoice.lib.ctrl.mgr.companion.companion_config import CompanionConfig
 from castervoice.lib.ctrl.mgr.grammar_activator import GrammarActivator
-from castervoice.lib.ctrl.mgr.loading.reload.manual_reload_observable import ManualReloadObservable
-from castervoice.lib.ctrl.mgr.loading.reload.timer_reload_observable import TimerReloadObservable
-from castervoice.lib.ctrl.mgr.rule_maker.mapping_rule_maker import MappingRuleMaker
+from castervoice.lib.ctrl.mgr.loading.reload_watchers import ManualReloadObservable, TimerReloadObservable
+from castervoice.lib.ctrl.mgr.mapping_rule_maker import MappingRuleMaker
 from castervoice.lib.ctrl.mgr.rules_config import RulesConfig
 from castervoice.lib.ctrl.mgr.validation.combo.combo_validation_delegator import ComboValidationDelegator
 from castervoice.lib.ctrl.mgr.validation.combo.non_empty_validator import RuleNonEmptyValidator
@@ -34,6 +32,28 @@ from castervoice.lib.merge.ccrmerging2.ccrmerger2 import CCRMerger2
 from castervoice.lib.merge.ccrmerging2.merging.classic_merging_strategy import ClassicMergingStrategy
 from castervoice.lib.ctrl.mgr.engine_manager import EngineModesManager
 
+from castervoice.lib.config.config_toml import TomlConfig
+
+
+class CompanionConfig(TomlConfig):
+    """
+    Controls companion rules. It is possible to make a circular companion rule relationship. Do not do this.
+    """
+
+    def __init__(self):
+        from castervoice.lib import settings
+        super(CompanionConfig, self).__init__(settings.settings(["paths", "COMPANION_CONFIG_PATH"]))
+        self.load()
+        self._initialize()
+
+    def _initialize(self):
+        from castervoice.lib import const
+        if len(self._config) == 0:
+            self._config = const.COMPANION_STARTER
+            self.save()
+
+    def get_companions(self, rcn):
+        return [] if rcn not in self._config else list(self._config[rcn])
 class Nexus:
     def __init__(self, content_loader):
         """
