@@ -4,7 +4,7 @@ from dragonfly import MappingRule, CompoundRule
 
 from castervoice.lib.const import CCRType
 from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
-from castervoice.lib.ctrl.mgr.validation.combo.rule_family_validator import RuleFamilyValidator
+from castervoice.lib.ctrl.mgr.validation.combo import RuleFamilyValidator
 from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.selfmod.selfmodrule import BaseSelfModifyingRule
 
