@@ -191,14 +191,14 @@ class Navigation(MergeRule):
         #     R(Function(text_utils.master_text_v)), # this is now implemented below
         "shift click":
             R(Key("shift:down") + Mouse("left") + Key("shift:up")),
-        "stoosh [repeat <nnavi500>]":
+        "(stoosh|copy) [repeat <nnavi500>]":
             R(Function(navigation.stoosh_keep_clipboard), rspec="stoosh"),
         "cut [repeat <nnavi500>]":
             R(Function(navigation.cut_keep_clipboard), rspec="cut"),
-        "spark [repeat <nnavi500>] [(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]]":
+        "(spark|paste) [repeat <nnavi500>] [(<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]]":
             R(Function(navigation.drop_keep_clipboard), rspec="spark"),
-        "splat [<splatdir>] [repeat <nnavi10>]":
-            R(Key("c-%(splatdir)s"), rspec="splat")*Repeat(extra="nnavi10"),
+        #"splat [<splatdir>] [repeat <nnavi10>]":
+        #    R(Key("c-%(splatdir)s"), rspec="splat")*Repeat(extra="nnavi10"),
         "deli [repeat <nnavi50>]":
             R(Key("del/5"), rspec="deli")*Repeat(extra="nnavi50"),
         "clear [repeat <nnavi50>]":
@@ -211,8 +211,8 @@ class Navigation(MergeRule):
         #     R(Function(navigation.next_line), rspec="tell dock"),
         # "(hark | heart) <semi>":
         #     R(Function(navigation.previous_line), rspec="hark dock"),
-        "duple [<nnavi50>]":
-            R(Function(navigation.duple_keep_clipboard), rspec="duple"),
+        #"duple [<nnavi50>]":
+        #    R(Function(navigation.duple_keep_clipboard), rspec="duple"),
         # "Kraken":
         #     R(Key("c-space"), rspec="Kraken"),
         "undo [repeat <nnavi10>]":

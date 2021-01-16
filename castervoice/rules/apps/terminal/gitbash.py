@@ -19,6 +19,8 @@ class GitBashRule(MergeRule):
     GIT_ADD_ALL = "g, i, t, space, a, d, d, space, minus, A"
     GIT_COMMIT = "g, i, t, space, c, o, m, m, i, t, space, minus, m, space, quote, quote, left"
     mapping = {
+        "(git|get) clone ":
+            Text("git clone "),
         "(git|get) base":
             Text("git "),
         "(git|get) (initialize repository|init)":
@@ -63,8 +65,6 @@ class GitBashRule(MergeRule):
             R(Text("cd ..")),
         "CD":
             R(Text("cd ")),
-        "list":
-            R(Text("ls")),
         "make directory":
             R(Text("mkdir ")),
         "undo [last] commit | (git|get) reset soft head":

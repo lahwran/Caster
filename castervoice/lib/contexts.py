@@ -5,7 +5,8 @@ TERMINAL_CONTEXT = AppContext(executable=[
     "\\bash.exe",
     "\\cmd.exe",
     "\\mintty.exe",
-    "\\powershell.exe"
+    "\\powershell.exe",
+    "\\Terminus.exe",
     ])
 
 JETBRAINS_CONTEXT = AppContext(executable="idea", title="IntelliJ") \

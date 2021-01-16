@@ -78,8 +78,8 @@ class DragonRule(MappingRule):
             R(Playback([(["view", "recognition", "history"], 0.03)])
                 + Pause("300") + Key("escape"), 
                     rdescript="Dragon: open Dragon recognition history then close it"),
-        "[dictation] sources": R(Mimic("manage", "dictation", "sources"), 
-            rdescript="Dragon: manage dictation sources"),
+        #"[dictation] sources": R(Mimic("manage", "dictation", "sources"),
+        #    rdescript="Dragon: manage dictation sources"),
         
     }
     # see above

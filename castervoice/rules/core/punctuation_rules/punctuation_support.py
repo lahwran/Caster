@@ -62,5 +62,5 @@ def text_punc_dict():
         "left " + _id["{}"]:                                  "{",
         "pipe (sim | symbol)":                                "|",
         "right " + _id["{}"]:                                 "}",
-        "tilde":                                              "~",
+        "till day":                                              "~",
     }

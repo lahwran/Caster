@@ -1,4 +1,6 @@
 import os
+import pipes
+import re
 import sys
 import shlex
 import threading
@@ -22,6 +24,18 @@ from castervoice.lib.ctrl.rule_details import RuleDetails
 from castervoice.lib.merge.selfmod.selfmodrule import BaseSelfModifyingRule
 from castervoice.lib.merge.state.short import R
 
+def format_wsl(folder):
+    path = folder.replace("\\", "/")
+    drive = re.match(r"^([a-zA-Z]):/(.*)$", path)
+    if drive:
+        return "/mnt/%s/%s" % (drive.group(1).lower(), drive.group(2))
+    return path
+def format_mingw(folder):
+    path = folder.replace("\\", "/")
+    drive = re.match(r"^([a-zA-Z]):/(.*)$", path)
+    if drive:
+        return "/%s/%s" % (drive.group(1).lower(), drive.group(2))
+    return path
 
 class BringRule(BaseSelfModifyingRule):
     """
@@ -37,7 +51,9 @@ class BringRule(BaseSelfModifyingRule):
     # Contexts
     _browser_context = AppContext(["chrome", "firefox"])
     _explorer_context = AppContext("explorer.exe") | contexts.DIALOGUE_CONTEXT
-    _terminal_context = contexts.TERMINAL_CONTEXT
+    _terminal_context = contexts.TERMINAL_CONTEXT & ~AppContext(title=["MINGW:", "lahwran@lahwran-win"])
+    _wsl_terminal_context = AppContext(title="lahwran@lahwran-win")
+    _mingw_terminal_context = AppContext(title="MINGW")
     # Paths
     _terminal_path = settings.settings(["paths", "TERMINAL_PATH"])
     _explorer_path = str(Path("C:\\Windows\\explorer.exe"))
@@ -189,6 +205,8 @@ class BringRule(BaseSelfModifyingRule):
         if not app:
             ContextAction(Function(lambda: Popen([BringRule._explorer_path, folder])), [
                 (BringRule._terminal_context, Text("cd \"%s\"\n" % folder)),
+                (BringRule._wsl_terminal_context, Text("cd %s\n" % pipes.quote(format_wsl(folder)))),
+                (BringRule._mingw_terminal_context, Text("cd %s\n" % pipes.quote(format_mingw(folder)))),
                 (BringRule._explorer_context, Key("c-l/5") + Text("%s\n" % folder))
             ]).execute()
         elif app == "terminal":

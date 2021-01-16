@@ -1,4 +1,3 @@
-from castervoice.lib.ctrl.basic_grammar_container import BasicGrammarContainer
 from castervoice.lib.ctrl.ccr_toggle import CCRToggle
 from castervoice.lib.ctrl.grammar_activator import GrammarActivator
 from castervoice.lib.ctrl.loading.reload_watchers import ManualReloadObservable, TimerReloadObservable
@@ -204,3 +203,45 @@ class Nexus:
 
     def set_ccr_active(self, active):
         self._grammar_manager.set_ccr_active(active)
+
+
+class BasicGrammarContainer(object):
+    """
+    Responsible for holding and destroying
+    CCR and non-CCR grammars.
+    """
+
+    def __init__(self):
+        """
+        ccr grammars ALL get wiped every merge = list
+        non-ccr grammars get turned on/off one at a time = dict
+        """
+        self._ccr_grammars = []
+        self._non_ccr_grammars = {}
+
+    def set_non_ccr(self, rcn, grammar):
+        if rcn in self._non_ccr_grammars:
+            old_grammar = self._non_ccr_grammars[rcn]
+            BasicGrammarContainer._empty_grammar(old_grammar)
+            del self._non_ccr_grammars[rcn]
+
+        if grammar is not None:
+            self._non_ccr_grammars[rcn] = grammar
+
+    def set_ccr(self, ccr_grammars):
+        # first, wipe out old ccr rules
+        for ccr_grammar in self._ccr_grammars:
+            BasicGrammarContainer._empty_grammar(ccr_grammar)
+        self._ccr_grammars = ccr_grammars
+
+    def wipe_ccr(self):
+        self.set_ccr([])
+
+    @staticmethod
+    def _empty_grammar(grammar):
+        # disable all of the grammar's rules
+        for rule in grammar.rules:
+            rule.disable()
+        # disable / unload grammar
+        grammar.disable()
+        grammar.unload()
