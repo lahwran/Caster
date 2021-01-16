@@ -5,6 +5,7 @@ from dragonfly import Function, Repeat, Dictation, Choice, ContextAction
 from castervoice.lib.context import AppContext
 
 from castervoice.lib import navigation, context, textformat, text_utils
+from castervoice.rules.core.alphabet_rules.alphabet_support import caster_alphabet
 from castervoice.rules.core.navigation_rules import navigation_support
 from dragonfly.actions.action_mimic import Mimic
 
@@ -12,14 +13,20 @@ from castervoice.lib.actions import Key, Mouse
 from castervoice.rules.ccr.standard import SymbolSpecs
 
 try:  # Try first loading from caster user directory
-    from alphabet_rules.alphabet_support import caster_alphabet
-except ImportError: 
-    from castervoice.rules.core.alphabet_rules.alphabet_support import caster_alphabet
-
-try:  # Try  first loading  from caster user directory
     from punctuation_rules.punctuation_support import double_text_punc_dict, text_punc_dict
+except ImportError:
+    try:  # Try  first loading from caster user directory top level
+        from punctuation_support import double_text_punc_dict, text_punc_dict
+    except ImportError:
+        from castervoice.rules.core.punctuation_rules.punctuation_support import double_text_punc_dict, text_punc_dict
+
+try:
+    from keyboard_rules.keyboard import Keyboard
 except ImportError: 
-    from castervoice.rules.core.punctuation_rules.punctuation_support import double_text_punc_dict, text_punc_dict
+    try:
+        from keyboard import Keyboard
+    except ImportError: 
+        from castervoice.rules.core.keyboard_rules.keyboard import Keyboard
 
 from castervoice.lib.const import CCRType
 from castervoice.lib.ctrl.rule_details import RuleDetails
@@ -43,110 +50,11 @@ for key, value in _dtpd.items():
         raise Exception(msg.format(str(value)))
 
 
-def rotate_display(angle):
-    subprocess.call(["C:\\Users\\Lauren\\Downloads\\display\\display64.exe", "/rotate", angle or "0"])
-
-
-
-def change_resolution(offset=1):
-    screen = tuple(win32_get())
-    available = win32_get_modes()
-    if screen not in available:
-        new = available[0]
-    else:
-        index = available.index(screen)
-
-        new = available[max(min(len(available)-1, index+offset), 0)]
-    #print("current resolution is: ", screen, new, available)
-    win32_set(new[0], new[1])
-def resolution_down(nnavi3):
-    change_resolution(nnavi3 or 1)
-def resolution_up(nnavi3):
-    change_resolution(-(nnavi3 or 1))
-
-def win32_get_modes():
-    '''
-    Get the primary windows display width and height
-    '''
-    import win32api
-    from pywintypes import DEVMODEType, error
-    modes = []
-    i = 0
-    try:
-        while True:
-            mode = win32api.EnumDisplaySettings(None, i)
-            modes.append((
-                int(mode.PelsWidth),
-                int(mode.PelsHeight),
-                int(mode.BitsPerPel),
-                ))
-            i += 1
-    except error:
-        pass
-
-    by_size = sorted(modes, key=lambda x: x[0]*x[1])
-    max_width, max_height, max_depth = by_size[-1]
-    results = []
-    seen = set()
-    for width, height, depth in by_size:
-        ratios = [width/float(max_width), height/float(max_height)]
-        distortion = max(ratios)/min(ratios)
-        #print("resolution: %s,%s,%s distortion: %s" % (width,height,depth,distortion))
-        result = (width,height,distortion)
-        if result in seen:
-            continue
-        seen.add(result)
-        results.append(result)
-    results = sorted(results, key=lambda x: (int(10*x[2]), -x[0]*x[1]))[:6]
-    return [x[:-1] for x in results]
-
-
-
-
-def win32_get():
-    '''
-    Get the primary windows display width and height
-    '''
-    import ctypes
-    user32 = ctypes.windll.user32
-    screensize = (
-        user32.GetSystemMetrics(0),
-        user32.GetSystemMetrics(1),
-        )
-    return screensize
-
-def win32_set(width=None, height=None, depth=32):
-    '''
-    Set the primary windows display to the specified mode
-    '''
-    # Gave up on ctypes, the struct is really complicated
-    #user32.ChangeDisplaySettingsW(None, 0)
-    import win32api
-    from pywintypes import DEVMODEType
-    if width and height:
-
-        if not depth:
-            depth = 32
-
-        mode = win32api.EnumDisplaySettings()
-        mode.PelsWidth = width
-        mode.PelsHeight = height
-        mode.BitsPerPel = depth
-
-        win32api.ChangeDisplaySettings(mode, 0)
-    else:
-        win32api.ChangeDisplaySettings(None, 0)
 
 class Navigation(MergeRule):
     pronunciation = "navigation"
 
     mapping = {
-        "resolution down [<nnavi3>]":
-            R(Function(resolution_down), rspec="rotate"),
-        "resolution up [<nnavi3>]":
-            R(Function(resolution_up), rspec="rotate"),
-        "display rotate [<angle>]":
-            R(Function(rotate_display), rspec="rotate"),
         # "periodic" repeats whatever comes next at 1-second intervals until "terminate"
         # or "escape" (or your SymbolSpecs.CANCEL) is spoken or 100 tries occur
         # "periodic":
@@ -189,8 +97,6 @@ class Navigation(MergeRule):
             R(Key("enter"), rspec="shock")*Repeat(extra="nnavi50"),
         # "(<mtn_dir> | <mtn_mode> [<mtn_dir>]) [(<nnavi500> | <extreme>)]":
         #     R(Function(text_utils.master_text_v)), # this is now implemented below
-        "shift click":
-            R(Key("shift:down") + Mouse("left") + Key("shift:up")),
         "(stoosh|copy) [repeat <nnavi500>]":
             R(Function(navigation.stoosh_keep_clipboard), rspec="stoosh"),
         "cut [repeat <nnavi500>]":
@@ -215,15 +121,6 @@ class Navigation(MergeRule):
         #    R(Function(navigation.duple_keep_clipboard), rspec="duple"),
         # "Kraken":
         #     R(Key("c-space"), rspec="Kraken"),
-        "undo [repeat <nnavi10>]":
-            R(Key("c-z"))*Repeat(extra="nnavi10"),
-        "redo [repeat <nnavi10>]":
-            R(
-                ContextAction(default=Key("c-y")*Repeat(extra="nnavi10"),
-                              actions=[
-                                  (AppContext(executable=["rstudio", "foxitreader"]),
-                                   Key("cs-z")*Repeat(extra="nnavi10")),
-                              ])),
 
         # text formatting
         # "set [<big>] format (<capitalization> <spacing> | <capitalization> | <spacing>) [(bow|bowel)]":
@@ -251,17 +148,17 @@ class Navigation(MergeRule):
             R(Function(navigation.right_click)),
         "(kick double|double kick)":
             R(Function(navigation.left_click)*Repeat(2)),
-        "squat":
-            R(Function(navigation.left_down)),
-        "bench":
-            R(Function(navigation.left_up)),
+        #"squat":
+        #    R(Function(navigation.left_down)),
+        #"bench":
+        #    R(Function(navigation.left_up)),
 
         # keystroke commands
         "<direction> [repeat <nnavi500>]":
             R(Key("%(direction)s")*Repeat(extra='nnavi500'), rdescript="arrow keys"),
         "(lease wally | latch) [repeat <nnavi10>]":
             R(Key("home:%(nnavi10)s")),
-        "(ross wally | ratch) [repeat <nnavi10>]":
+        "ross wally [repeat <nnavi10>]":
             R(Key("end:%(nnavi10)s")),
         "sauce wally [repeat <nnavi10>]":
             R(Key("c-home:%(nnavi10)s")),
@@ -409,20 +306,9 @@ class Navigation(MergeRule):
             "Quadra": 4
         }),
         navigation_support.TARGET_CHOICE,
-        navigation_support.get_direction_choice("mtn_dir"),
-        Choice("mtn_mode", {
-            "shin": "s",
-            "queue": "cs",
-            "fly": "c",
-        }),
         Choice("extreme", {
             "Wally": "way",
-        })  ,      Choice("angle", {
-            "ninety": "90",
-            "minus ninety": "270",
-            "two [hundred] seventy": "270",
-            "zero": "0"
-        }),
+        })  ,
         Choice("big", {
             "big": True,
         }),
@@ -440,12 +326,9 @@ class Navigation(MergeRule):
         "textnv": "",
         "capitalization": 0,
         "spacing": 0,
-        "mtn_mode": None,
-        "mtn_dir": "right",
         "extreme": None,
         "big": False,
         "splatdir": "backspace",
-        "modifier": "",
     }
 
 

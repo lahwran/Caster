@@ -332,7 +332,10 @@ def _get_defaults():
             "default_engine_mode": False, 
             "engine_mode": "normal",
             "default_mic": False, 
-            "mic_mode": "on"
+            "mic_mode": "on",
+            "mic_sleep_timer_on": True, 
+            "mic_sleep_timer": 300, # Seconds before microphone goes to sleep after last successful recognition.
+            # Note: No greater than 5 minutes or 300 seconds unless DPI/DPI sleep settings are adjusted
         },
 
         # python settings
@@ -479,7 +482,10 @@ def initialize():
     # calculate prerequisites
     SYSTEM_INFORMATION = _get_platform_information()
     _BASE_PATH = str(Path(__file__).resolve().parent.parent)
-    _USER_DIR = user_data_dir(appname="caster", appauthor=False)
+    if os.getenv("CASTER_USER_DIR") is not None:
+        _USER_DIR = os.getenv("CASTER_USER_DIR")
+    else:
+        _USER_DIR = user_data_dir(appname="caster", appauthor=False)
     _SETTINGS_PATH = str(Path(_USER_DIR).joinpath("settings/settings.toml"))
 
     for directory in ["data", "rules", "transformers", "hooks", "sikuli", "settings"]:

@@ -3,7 +3,7 @@
 
 The application name is followed by a pronunciation to `enable` or `disable` and the respective rules. A '/' separates pronunciations for different rules belonging to a single app grammar.
 
-Classic Install Location: `castervoice\rules\apps' ` in Caster source code. 
+Classic Install Location: `castervoice\rules\apps'` in Caster source code.
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -25,6 +25,7 @@ Classic Install Location: `castervoice\rules\apps' ` in Caster source code.
 - [Gitter](#gitter) - gitter
 - [GitHub Desktop](#github-desktop) - github desktop
 - [Jetbrains](#jetbrains) - jet brains
+- [Jira](#jira) - jira
 - [KDiff3](#kdiff3) - K diff
 - [lyx](#lyx) - lyx
 - [Microsoft Teams](#microsoft-teams) - microsoft teams
@@ -44,7 +45,7 @@ Classic Install Location: `castervoice\rules\apps' ` in Caster source code.
 
 <!-- /TOC -->
 
-# Adobe acrobat
+## Adobe Acrobat
 
 | Command                            | Command                      | Command                                  |
 | :--------------------------------- | :--------------------------- | :--------------------------------------- |
@@ -60,7 +61,7 @@ Classic Install Location: `castervoice\rules\apps' ` in Caster source code.
 | `change speed <speed_one_to_nine>` | `reverse [direction]`        | `stop [scrolling]`                       |
 | `highlight`                        | `hand tool`                  | `select tool`                            |
 
-# Atom
+## Atom
 
 | Command                               | Command                                           | Command                             |
 | :------------------------------------ | :------------------------------------------------ | :---------------------------------- |
@@ -141,7 +142,7 @@ Classic Install Location: `castervoice\rules\apps' ` in Caster source code.
 
 \* select / copy / cut / paste / delete
 
-# Google Chrome
+## Google Chrome
 
 | Command                   | Command                              | Command                      |
 | :------------------------ | :----------------------------------- | :--------------------------- |
@@ -170,11 +171,11 @@ Classic Install Location: `castervoice\rules\apps' ` in Caster source code.
 | `checkout [this] pull request [locally]` | Called from any tab of the Github pull request page: ("Conversation", "Commits", "Checks", "Files changed"). Adjust pause times in the `gitbash` section of `settings.toml`. |
 | `update [this] pull request [locally]`   | Called from any tab of the Github pull request page: ("Conversation", "Commits", "Checks", "Files changed"). Adjust pause times in the `gitbash` section of `settings.toml`. |
 
-# Command Prompt
+## Command Prompt
 
-Same Commands as [Git Bash](#git-bash)
+Same Commands as [Git Bash](## git-bash)
 
-# Total Commander
+## Total Commander
 
 | Command           | Command              | Command         |
 | :---------------- | :------------------- | :-------------- |
@@ -186,14 +187,14 @@ Same Commands as [Git Bash](#git-bash)
 | `multi rename`    | `display thumbnails` | `display list`  |
 | `display details` | `display file tree`  |                 |
 
-# Total Commander: synchronize directories
+## Total Commander: synchronize directories
 
 | Command         | Command            | Command       |
 | :-------------- | :----------------- | :------------ |
 | `compare files` | `copy left`        | `copy right`  |
 | `view right`    | `remove selection` | `synchronize` |
 
-# Dragon
+## Dragon
 
 | Command                      | Command               | Command                           |
 | :--------------------------- | :-------------------- | :-------------------------------- |
@@ -208,7 +209,7 @@ Same Commands as [Git Bash](#git-bash)
 | `add to vocab`               | `train from vocab`    |                                   |
 | `peak recognition history`   | `remove from vocab`   |                                   |
 
-# Eclipse
+## Eclipse
 
 | Command                                | Command                            | Command                 |
 | :------------------------------------- | :--------------------------------- | :---------------------- |
@@ -222,7 +223,7 @@ Same Commands as [Git Bash](#git-bash)
 | `find everywhere`                      | `prior tab [<n>]`                  | `symbol prior [<n>]`    |
 | `find regex <text> [<back>] [<go>]`    | `refractor symbol`                 | `terminate`             |
 
-# Emacs
+## Emacs
 
 | Command               | Command               | Command            |
 | :-------------------- | :-------------------- | :----------------- |
@@ -238,7 +239,7 @@ Same Commands as [Git Bash](#git-bash)
 | `document forward`    | `paragraph backward`  | `word backward`    |
 | `forward delete`      | `paragraph forward`   | `word forward`     |
 
-# Excel
+## Excel
 
 | Command                                                | Command                          | Command                            |
 | :----------------------------------------------------- | :------------------------------- | :--------------------------------- |
@@ -251,7 +252,7 @@ Same Commands as [Git Bash](#git-bash)
 | `arrange Windows`                                      | `auto sum`                       | `freeze panes`                     |
 | `toggle edit cell`                                     | `|`                              |                                    |
 
-# Internet Explorer
+## Internet Explorer
 
 | Command                             | Command       | Command      |
 | :---------------------------------- | :------------ | :----------- |
@@ -259,14 +260,14 @@ Same Commands as [Git Bash](#git-bash)
 | `address bar`                       | `get up`      |              |
 | `get back`                          | `new file`    |              |
 
-# File Dialogues
+## File Dialogues
 
 | Command               | Command      | Command       |
 | :-------------------- | :----------- | :------------ |
 | `up [n]`              | `back [n]`   | `forward [n]` |
 | `(files / file list)` | `navigation` | `[file] name` |
 
-# Firefox
+## Firefox
 
 | Command                   | Command                              | Command                      |
 | :------------------------ | :----------------------------------- | :--------------------------- |
@@ -295,7 +296,7 @@ Same Commands as [Git Bash](#git-bash)
 | `checkout [this] pull request [locally]` | Called from any tab of the Github pull request page: ("Conversation", "Commits", "Checks", "Files changed"). Adjust pause times in the `gitbash` section of `settings.toml`. |
 | `update [this] pull request [locally]`   | Called from any tab of the Github pull request page: ("Conversation", "Commits", "Checks", "Files changed"). Adjust pause times in the `gitbash` section of `settings.toml`. |
 
-# Flash Develop
+## Flash Develop
 
 | Command              | Command            | Command                 |
 | :------------------- | :----------------- | :---------------------- |
@@ -307,7 +308,7 @@ Same Commands as [Git Bash](#git-bash)
 | `find everywhere`    | `refractor symbol` | `symbol prior [<n>]`    |
 | `format code`        | `resume`           | `terminate`             |
 
-# fman
+## fman
 
 | Command           | Command                       | Command          |
 | :---------------- | :---------------------------- | :--------------- |
@@ -321,13 +322,13 @@ Same Commands as [Git Bash](#git-bash)
 | `sort [by] size`  | `sort [by] (modified / date)` | `stoosh path`    |
 | `terminal`        | `command pallette`            | `tabby`          |
 
-# Foxit Reader
+## Foxit Reader
 
 | Command           | Command          | Command           |
 | :---------------- | :--------------- | :---------------- |
 | `close tab [<n>]` | `next tab [<n>]` | `prior tab [<n>]` |
 
-# Git Bash
+## Git Bash
 
 | Command                       | Command                    | Command                     |
 | :---------------------------- | :------------------------- | :-------------------------- |
@@ -346,7 +347,7 @@ Same Commands as [Git Bash](#git-bash)
 | `commit`                      | `search recursive`         |                             |
 | `exit`                        | `search recursive count`   |                             |
 
-# GitHub Desktop
+## GitHub Desktop
 
 | Command                            | Command                 | Command                       |
 | :--------------------------------- | :---------------------- | :---------------------------- |
@@ -360,7 +361,7 @@ Same Commands as [Git Bash](#git-bash)
 | `update from master`               | `compare to branch`     | `merge into current [branch]` |
 | `compare on github`                | `[create] pull request` | ``                            |
 
-# Gitter
+## Gitter
 
 | Command         | Command          | Command       |
 | :-------------- | :--------------- | :------------ |
@@ -369,28 +370,38 @@ Same Commands as [Git Bash](#git-bash)
 | `emphasize`     | `insert image`   | `mention`     |
 | `<size> header` | `strikethrough`  | `latex`       |
 
-# Jetbrains
+## Jetbrains 
 
-| Command                          | Command                    | Command                     |
-| :------------------------------- | :------------------------- | :-------------------------- |
-| `Jen method`                     | `find in current`          | `search [everywhere]`       |
-| `auto complete`                  | `format code`              | `find symbol`               |
-| `auto file`                      | `format class`             | `[find] usage`              |
-| `build`                          | `go to line`               | `select ex`                 |
-| `build and run`                  | `jump to source`           | `select ex down`            |
-| `comment [line]`                 | `next tab`                 | `show doc`                  |
-| `delete line`                    | `prior tab`                | `show param`                |
-| `duplicate`                      | `quick fix`                | `uncomment line`            |
-| `expand [selection] [<n>]`       | `smart auto complete`      | `quick fix`                 |
-| `split right`                    | `pane left`                | `pane right`                |
-| `split down`                     | `pane down`                | `pane up`                   |
-| `split`                          | `last tab`                 | `second last tab`           |
-| `go [to] editor`                 | `go [to] project explorer` | `toggle terminal`           |
-| `new file`                       | `method forward`           | `method back`               |
-| `[move] line up`                 | `kill forward`             | `extract method`            |
-| `[move] line down`               | `kill back`                | `extract constant`          |
-| `extract param`                  | `kill`                     | `override method`           |
-| `auto indent`                    |                            |                             |
+It is worth noting that JetBrains commands may vary differently on Mac, versus Windows/Linux. 
+These commands are for Windows/Linux and creating a separate command ruleset for JetBrains on Mac is probably necessary.
+
+| Command                               | Command                        | Command                          |
+| :------------------------------------ | :----------------------------- | :------------------------------- |
+| `auto indent`                         | `build`                        | `build and run`                  |
+| `close pane [<n>] / pane close [<n>]` | `close tab [<n>]`              | `collapse`                       |
+| `collapse all`                        | `(comment / rem) [line]`       | `continue`                       |
+| `debug`                               | `(duplicate / duple)`          | `(%s error / error %s)`          |
+| `expand [selection] [<n>]`            | `extract (param / parameter)`  | `extract [variable|var]`         |
+| `extract constant`                    | `extract field`                | `file rename / rename file`      |
+| `find`                                | `find %s [match] [<n>]`        | `find [in] (all / files)`        |
+| `find action`                         | `find class`                   | `find file`                      |
+| `find next`                           | `find prior`                   | `[find] (usage / usages)`        |
+| `[find] (usage / usages) in file`     | `focus editor`                 | `format [code]`                  |
+| `go %s [<n>]`                         | `go [to line] [<n>]`           | `go block end`                   |
+| `go block start`                      | `go tool <n>`                  | `[go to] (source / declaration)` |
+| `[go to] implementation`              | `implement (method / methods)` | `inline`                         |
+| `(kill / delete) %s`                  | `method %s [<n>]`              | `[move] line %s [<n>]`           |
+| `(organize / optimize) imports`       | `override method`              | `pane %s [<n>]`                  |
+| `(pane %s / %s pane) [<n>]`           | `(pull / extract)`             | `quick fix`                      |
+| `redo [<n>]`                          | `refactor`                     | `rename`                         |
+| `replace [here]`                      | `replace [in] (all / files)`   | `run config`                     |
+| `run config`                          | `select ex`                    | `select ex down`                 |
+| `show (usage / usages)`               | `show doc`                     | `[show] settings`                |
+| `shrink [selection] [<n>]`            | `(skraken / smart kraken)`     | `smart step over`                |
+| `split [pane] %s`                     | `step into`                    | `step out`                       |
+| `step over`                           | `%s tab [<n>] / tab %s [<n>]`  | `toggle breakpoint`              |
+| `[toggle] (term / terminal)`          | `uncollapse`                   | `uncollapse all`                 |
+| `(uncomment / unrem) [line]`          | `view breakpoints`             |                                  |
 | GIT Commands (embedded terminal) |                            |                             |
 | `(get push / push)`              | `fetch`                    | `search recursive filetype` |
 | `(undo changes / reset hard)`    | `gooey blame`              | `stash`                     |
@@ -407,13 +418,26 @@ Same Commands as [Git Bash](#git-bash)
 | `commit`                         | `search recursive`         |                             |
 | `exit`                           | `search recursive count`   |                             |
 
-# kdiff3
+## Jira
+| Command                         | Command            | Command                      |
+| :------------------------------ | :----------------- | :--------------------------- |
+| `(action | actions)`            | `send to top`      | `go to reports`              |
+| `(action | edit) <action>`      | `share issue`      | `go to sprint`               |
+| `create issue`                  | `go to backlog`    | `go to tempo [teams]`        |
+| `edit issue`                    | `go to boards`     | `submit [form]`              |
+| `next (issue | item) [<n>]`     | `go to dashboards` | `toggle details`             |
+| `previous (issue | item) [<n>]` | `go to issues`     | `toggle presentation [mode]` |
+| `quick search`                  | `go to portfolio`  | `toggle swim lanes`          |
+| `send to bottom`                | `go to projects`   | `view issue`                 |
+
+
+## kdiff3
 
 | Command   | Command | Command |
 | :-------- | :------ | :------ |
 | `refresh` |         |         |
 
-# lyx
+## lyx
 
 | Command              | Command                | Command |
 | :------------------- | :--------------------- | :------ |
@@ -444,7 +468,7 @@ Same Commands as [Git Bash](#git-bash)
             "macro": "o"
 ```
 
-# Microsoft Teams
+## Microsoft Teams
 
 | command               | command               | command                        |
 | --------------------- | --------------------- | ------------------------------ |
@@ -465,7 +489,7 @@ Same Commands as [Git Bash](#git-bash)
 | accept \[audio\] call | view week             |                                |
 | decline \[call\]      |                       |                                |
 
-# Microsoft Visual Studio
+## Microsoft Visual Studio
 
 | Command                     | Command          | Command              |
 | :-------------------------- | :--------------- | :------------------- |
@@ -477,14 +501,14 @@ Same Commands as [Git Bash](#git-bash)
 | `cursor next`               | `on comment out` | `step over [<n>]`    |
 | `cursor prior`              | `resolve`        | `toggle full screen` |
 
-# Notepad++
+## Notepad++
 
 | Command              | Command        |
 | :------------------- | :------------- |
 | `function list`      | `remove style` |
 | `preview in browser` | `stylize <n2>` |
 
-# Outlook
+## Outlook
 
 | Command                            | Command                            | Command                             |
 | :--------------------------------- | :--------------------------------- | :---------------------------------- |
@@ -513,7 +537,7 @@ Same Commands as [Git Bash](#git-bash)
 | `next open message`                | `(prior / previous) open message`  | `previous view`                     |
 | `next view`                        | `[go] back`                        | ``                                  |
 
-# RStudio
+## RStudio
 
 | Command                             | Command      | Command          |
 | :---------------------------------- | :----------- | :--------------- |
@@ -528,13 +552,13 @@ Same Commands as [Git Bash](#git-bash)
 
 \* select / copy / cut / paste / delete
 
-# SQL Developer
+## SQL Developer
 
 | Command        | Command       | Command          |
 | :------------- | :------------ | :--------------- |
 | `comment line` | `format code` | `run this query` |
 
-# SQL Server Management Studio
+## SQL Server Management Studio
 
 | Command                   | Command          | Command           |
 | :------------------------ | :--------------- | :---------------- |
@@ -545,34 +569,41 @@ Same Commands as [Git Bash](#git-bash)
 | `[toggle] full screen`    | `next tab [<n>]` | `step over [<n>]` |
 | `close tab [<n>]`         | `prior bookmark` |                   |
 
-# Sublime
+## Sublime
 
-| Command                        | Command                           | Command                        |
-| :----------------------------- | :-------------------------------- | :----------------------------- |
-| `new file`                     | `new window`                      | `open file`                    |
-| `open folder`                  | `open recent`                     | `save as`                      |
-| `comment line`                 | `comment block`                   | `outdent lines`                |
-| `join lines`                   | `match bracket`                   | `(select / sell) all`          |
-| `(select / sell) scope [<n2>]` | `(select / sell) brackets [<n2>]` | `(select / sell) indent`       |
-| `find`                         | `get all`                         | `replace`                      |
-| `edit lines`                   | `edit next [<n3>]`                | `edit up [<n3>]`               |
-| `edit down [<n3>]`             | `edit all`                        | `transform upper`              |
-| `transform lower`              | `line <n>`                        | `<action>* line <n> [to <nn>]` |
-| `go to file`                   | `go to <dict> [<filetype>]`       | `go to word`                   |
-| `go to symbol`                 | `go to [symbol in] project`       | `go to that`                   |
-| `find that in project`         | `find that`                       | `command pallette`             |
-| `fold`                         | `unfold`                          | `unfold all`                   |
-| `fold [level] <n2>`            | `full screen`                     | `toggle side bar`              |
-| `zoom in [<n2>]`               | `zoom out [<n2>]`                 | `(set / add) bookmark`         |
-| `next bookmark`                | `previous bookmark`               | `clear bookmarks`              |
-| `build it`                     | `record macro`                    | `play [back] macro [<n3>]`     |
-| `(new / create) snippet`       | `close tab`                       | `next tab`                     |
-| `previous tab`                 | `<nth> tab`                       | `column <cols>`                |
-| `focus <panel>`                | `move <panel>`                    | `open terminal`                |
+| Command                          | Command                          | Command                          |
+| :------------------------------- | :------------------------------- | :------------------------------  |
+|`new file`                        |`new window`                      |`open file`                       |
+|`open folder`                     |`open recent`                     |`save as`                         |
+|`comment line`                    |`comment block`                   |`outdent lines`                   |
+|`join lines`                      |`match bracket`                   |`(select / sell) all`             |
+|`(select / sell) scope [<n2>]`    |`(select / sell) brackets [<n2>]` |`(select / sell) indent`          |
+|`find`                            |`get all`                         |`replace`                         |
+|`replace all`                     |`paste from history`              |`edit lines`                      |
+|`edit next [<n3>]`                |`edit only next [<n3>]`           |`edit up [<n3>]`                  |
+|`edit down [<n3>]`                |`edit all`                        |`transform upper`                 |
+|`transform lower`                 |`line <ln1>`                      |`<action> [line] <ln1> [by <ln2>]`|
+|`[move] line down [<n3>]`         |`[move] line up [<n3>]`           |`go to file`                      |
+|`go to <dict> [<filetype>]`       |`file back [<n2>]`                |`go to word`                      |
+|`go to symbol`                    |`go to [symbol in] project`       |`go to that`                      |
+|`find that in project`            |`find that`                       |`command pallette`                |
+|`go back [<n2>]`                  |`go forward [<n2>]`               |`next modification`               |
+|`previous modification`           |`fold`                            |`unfold`                          |
+|`unfold all`                      |`fold [level] <n2>`               |`full screen`                     |
+|`toggle side bar`                 |`show key bindings`               |`show at center`                  |
+|`zoom in [<n2>]`                  |`zoom out [<n2>]`                 |`(set / add) bookmark`            |
+|`next bookmark`                   |`previous bookmark`               |`clear bookmarks`                 |
+|`set mark`                        |`select mark`                     |`swap with mark`                  |
+|`delete mark`                     |`build it`                        |`build with`                      |
+|`build <nth>`                     |`build [<nth>] last`              |`record macro`                    |
+|`play [back] macro [<n3>]`        |`(new / create) snippet`          |`close tab`                       |
+|`next tab`                        |`previous tab`                    |`<nth> tab`                       |
+|`[<nth>] last tab`                |`column <cols>`                   |`focus <panel>`                   |
+|`move <panel>`                    |`open terminal`                   |`open console`                    |
 
-\* select / copy / cut / paste / delete
+\* select / copy / cut / paste / delete / comment
 
-# Typora
+## Typora
 
 | Command              | Command                        | Command                        |
 | :------------------- | :----------------------------- | :----------------------------- |
@@ -594,7 +625,8 @@ Same Commands as [Git Bash](#git-bash)
 | `zoom in <n>`        | `zoom out <n>`                 | `switch documnets`             |
 | `toggle [dev] tools` | `|`                            |                                |
 
-# Unity
+## Unity
+
 | Command                    | Command                        | Command                        |
 | :------------------------- | :----------------------------- | :----------------------------- |
 | `show <window>`            | `search <window>`              | `clear <window>`               |
@@ -604,25 +636,26 @@ Same Commands as [Git Bash](#git-bash)
 | `move [sibling] last`      | `(set active \| toggle )`      | `[load] selection [<1to9>]`    |
 | `store selection [<1to9>]` | `rename`                       |                                |
 
-
-# Visual Studio
+## Visual Studio
 
 | Command                            | Command                      | Command                             |
 | :--------------------------------- | :--------------------------- | :---------------------------------- |
-| `(list / show) documents`          | `collapse to definitions`    | `run all tests`                     |
-| `(set / toggle) bookmark`          | `comment block`              | `run tests`                         |
-| `(show / view) history`            | `comment line`               | `solution explorer`                 |
-| `(un / on) comment block`          | `compare (files / versions)` | `source control explorer`           |
-| `(un / on) comment line`           | `get latest [version]`       | `step into`                         |
-| `[add] [new] linked work item`     | `go to line`                 | `step out [of]`                     |
-| `[focus] document (window / pane)` | `next bookmark`              | `step over [<n>]`                   |
-| `[open] [go to] work item`         | `next tab [<n>]`             | `team explorer`                     |
-| `[toggle] break point`             | `prior bookmark`             | `toggle [section] outlining`        |
-| `[toggle] full screen`             | `prior tab [<n>]`            | `toggle all outlining`              |
-| `build solution`                   | `quick launch`               | `undo (checkout / pending changes)` |
-| `close tab [<n>]`                  | `resume`                     |                                     |
+| `(list / show) documents`          | `comment line`               | `resume`                            |
+| `(set / toggle) bookmark`          | `compare (files / versions)` | `run all tests`                     |
+| `(show / view) history`            | `get latest [version]`       | `run tests`                         |
+| `(un / on) comment block`          | `go back`                    | `show refs`                         |
+| `(un / on) comment line`           | `go forward`                 | `solution explorer`                 |
+| `[add] [new] linked work item`     | `go to debug`                | `source control explorer`           |
+| `[focus] document (window / pane)` | `go to definition`           | `step into`                         |
+| `[open] [go to] work item`         | `go to line`                 | `step out [of]`                     |
+| `[toggle] break point`             | `next bookmark`              | `step over [<n>]`                   |
+| `[toggle] full screen`             | `next tab [<n>]`             | `team explorer`                     |
+| `build solution`                   | `prior bookmark`             | `toggle [section] outlining`        |
+| `close tab [<n>]`                 | `prior tab [<n>]`            | `toggle all outlining`              |
+| `collapse to definitions`          | `quick launch`               | `undo (checkout / pending changes)` |
+| `comment block`                    |                              |                                     |
 
-# Visual Studio Code
+## Visual Studio Code
 
 ## CCR (Continuous Command Recognition)
 
@@ -638,8 +671,7 @@ Same Commands as [Git Bash](#git-bash)
 | `indent [<n>]`               | `all current word`                        | `copy line up [<n>]`                    |
 | `(Unindent/outdent) [<n>]`   | `select around <around_parables> [<n>]`   | `switch line up [<n>]`                  |
 | `match bracket`              | `select between <between_parables> [<n>]` | `switch line down [<n>]`                |
-| `hard delete [<n>]`          | 
-
+| `hard delete [<n>]`          |
 
 ## Non-CCR
 
@@ -684,7 +716,7 @@ Same Commands as [Git Bash](#git-bash)
 
 \* select / copy / cut / paste / delete
 
-# Webex Teams
+## Webex Teams
 
 | Command                            | Command                         | Command              |
 | :--------------------------------- | :------------------------------ | :------------------- |

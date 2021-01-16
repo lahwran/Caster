@@ -32,10 +32,10 @@ class JetbrainsRule(MergeRule):
         "distraction free mode": R(Key("as-d")),
         #"(duplicate|duple) %s" % DOWN: R(Key("c-d")),
         "find action": R(Key("cs-a/%s" % DELAY)),
+        #"format [code]": R(Key("ca-l")),
+        #"show doc": R(Key("c-q")),
         "smart autocomplete": R(Key("cs-space/%s" % DELAY)),
         "autocomplete": R(Key("c-space/%s" % DELAY)),
-        ##"format [code]": R(Key("ca-l")),
-        ##"show doc": R(Key("c-q")),
         #"find class": R(Key("c-n")),
         #"build": R(Key("c-f9")),
         "jetbrains run": R(Key("s-f10")),
@@ -48,26 +48,27 @@ class JetbrainsRule(MergeRule):
         ## "select ex down" : R(Key("cs-w")),
         "find file": R(Key("escape, shift, shift/%s" % DELAY)),
         "find": R(Key("c-f/%s" % DELAY)),
-        ## "find %s [match] [<n>]" % FORWARD: R(Key("enter")) * Repeat(extra="n"),
-        ## "find %s [match] [<n>]" % BACK: R(Key("s-enter")) * Repeat(extra="n"),
+        "find next": R(Key("f3")),
+        #"find %s [match] [<n>]" % FORWARD: R(Key("enter")) * Repeat(extra="n"),
+        #"find %s [match] [<n>]" % BACK: R(Key("s-enter")) * Repeat(extra="n"),
         "jetbrains replace": R(Key("c-r/%s" % DELAY)),
         "find all": R(Key("cs-f/%s" % DELAY)),
         "replace all": R(Key("cs-r/%s" % DELAY)),
-        "toggle line numbers": R(Key("as-n/%s" % DELAY)),
+        #"toggle line numbers": R(Key("as-n/%s" % DELAY)),
         ## "replace [in] (all|files)": R(Key("cs-r")),
         "<n> go": R(Text("%(n)sG")),
         ## "implement (%s|%s)" % (method, methods): R(Key("c-i")),
         ## "override %s" % method: R(Key("c-o")),
         ## "run config": R(Key("as-f10")),
-        "jetbrains find (usage|usages)": R(Key("a-f7")),
+        "find (usage|usages)": R(Key("a-f7")),
         #"[go to] (source|declaration)": R(Key("c-b")),
         #"(skraken|smart kraken)": R(Key("cs-space")),
         "go %s [<n>]" % FORWARD: R(Key("ca-right")) * Repeat(extra="n"),
         "go %s [<n>]" % BACK: R(Key("ca-left")) * Repeat(extra="n"),
         #"%s %s [<n>]" % (method, FORWARD): R(Key("a-down")) * Repeat(extra="n"),
         #"%s %s [<n>]" % (method, BACK): R(Key("a-up")) * Repeat(extra="n"),
-        "go [to] (%s error|error %s)" % (FORWARD, RIGHT): R(Key("f2")) * Repeat(extra="n"),
-        "go [to] (%s error|error %s)" % (BACK, LEFT): R(Key("s-f2")) * Repeat(extra="n"),
+        "[go [to]] (%s error|error %s)" % (FORWARD, RIGHT): R(Key("f2")) * Repeat(extra="n"),
+        "[go [to]] (%s error|error %s)" % (BACK, LEFT): R(Key("s-f2")) * Repeat(extra="n"),
         #"[organize|optimize] imports": R(Key("ca-o")) * Repeat(extra="n"),
         #"[move] line %s [<n>]" % UP: R(Key("as-up")) * Repeat(extra="n"),
         #"[move] line %s [<n>]" % DOWN: R(Key("as-down")) * Repeat(extra="n"),
@@ -81,13 +82,19 @@ class JetbrainsRule(MergeRule):
         "jetbrains settings": R(Key("ca-s/%s" % DELAY) + Key("c-f/%s" % DELAY)),
 
         ## only works if you disable tabs.
-        "close (pane|tab) [<n>]|pane close [<n>]": R(Key("c-f4/%s" % DELAY)) * Repeat(extra="n"),
-        "unsplit": R(Key("ca-w,u")),
-        "detach editor": R(Key("ca-w,d")),
-        "go [to] implementation": R(Key("ca-b")),
-        "go [to] (usages|definition|declaration)": R(Key("c-b")),
+        "[jetbrains] close (pane|tab) [<n>]|pane close [<n>]": R(Key("c-f4/%s" % DELAY)) * Repeat(extra="n"),
+        "[jetbrains] unsplit": R(Key("ca-w,u")),
+        #"[jetbrains] detach editor": R(Key("ca-w,d")),
+        "[jetbrains] go [to] implementation": R(Key("ca-b")),
+        "[jetbrains] go [to] (usages|definition|declaration)": R(Key("c-b")),
+        "[jetbrains] [find] (usage|usages) in file": R(Key("c-f7")),
 
-        ## refactoring
+        "collapse": R(Key("c--")),
+        "uncollapse": R(Key("c-+")),
+        "collapse all": R(Key("cs--")),
+        "uncollapse all": R(Key("cs-+")),
+
+                  ## refactoring
         #"refactor": R(Key("cas-t")),
         "refactor rename": R(Key("s-f6")),
         "refactor move": R(Key("f6")),
@@ -99,15 +106,17 @@ class JetbrainsRule(MergeRule):
         "refactor %s (param|parameter)" % extract: R(Key("ca-p")),
 
         ## window navigation
-        "focus editor": R(Key("c-tab/%s,c-tab/%s" % (DELAY, DELAY))),
-        "(toggle|toll) project": R(Key("a-1")),
-        "(toggle|toll) find": R(Key("a-3")),
-        "(toggle|toll) run": R(Key("a-4")),
-        "(toggle|toll) terminal": R(Key("a-f12/%s" % DELAY)),
-        "(toggle|toll) commit": R(Key("a-0/%s" % DELAY)),
-        "(toggle|toll) structure": R(Key("a-7/%s" % DELAY)),
-        "(toggle|toll) services": R(Key("a-8/%s" % DELAY)),
-        "(toggle|toll) get": R(Key("a-9/%s" % DELAY)),
+        "focus editor": R(Key("c-tab/200,c-tab/%s" % (DELAY))),
+
+        "toggle project": R(Key("a-1")),
+        "toggle find": R(Key("a-3")),
+        "toggle run": R(Key("a-4")),
+        "toggle terminal": R(Key("a-f12/%s" % DELAY)),
+        "toggle commit": R(Key("a-0/%s" % DELAY)),
+        "toggle structure": R(Key("a-7/%s" % DELAY)),
+        "toggle services": R(Key("a-8/%s" % DELAY)),
+        "toggle get": R(Key("a-9/%s" % DELAY)),
+        "go tool <n>": R(Key("a-%(n)s")),
         "spark": R(Key("cs-v/%s" % DELAY)),
 
         ## must be bound manually below this point
@@ -116,12 +125,31 @@ class JetbrainsRule(MergeRule):
         "(toggle|toll) database": R(Key("ca-d/%s" % DELAY)),
         "split vertical": R(Text(":vs") + Key("enter")),
         "split horizontal": R(Text(":sp") + Key("enter")),
-        "pane %s [<n>]" % UP: R(Key("escape") + Key("c-w,k")) * Repeat(extra="n"),
-        "pane %s [<n>]" % DOWN: R(Key("escape") + Key("c-w,j")) * Repeat(extra="n"),
-        "(pane next|next pane) [<n>]": R(Key("escape") + Key("c-w,w")) * Repeat(extra="n"),
-        "(pane %s|%s pane) [<n>]" % (RIGHT, RIGHT): R(Key("escape") + Key("c-w,l")) * Repeat(extra="n"),
-        "(pane %s|%s pane) [<n>]" % (LEFT, LEFT): R(Key("escape") + Key("c-w,h")) * Repeat(extra="n"),
-        "file rename | rename file": R(Key("cas-r")),
+        #"pane %s [<n>]" % UP: R(Key("escape") + Key("c-w,k")) * Repeat(extra="n"),
+        #"pane %s [<n>]" % DOWN: R(Key("escape") + Key("c-w,j")) * Repeat(extra="n"),
+        "next pane [<n>]": R(Key("escape") + Key("c-w,w")) * Repeat(extra="n"),
+        "pane %s [<n>]" % RIGHT: R(Key("escape") + Key("c-w,l")) * Repeat(extra="n"),
+        "pane %s [<n>]" % LEFT: R(Key("escape") + Key("c-w,h")) * Repeat(extra="n"),
+        "rename file": R(Key("cas-r")),
+        # # jet brains can only split horizontally or vertically
+        # "split [pane] %s" % UP: R(Key("cs-s,h")),
+        # "split [pane] %s" % DOWN: R(Key("cs-s,h")),
+        # "split [pane] %s" % RIGHT: R(Key("cs-s,v")),
+        # "split [pane] %s" % LEFT: R(Key("cs-s,v")),
+
+        # only works if you disable tabs.
+
+        # debugging
+        #"step over": R(Key("f8")),
+        #"step into": R(Key("f7")),
+        #"smart step over": R(Key("s-f7")),
+        #"step out": R(Key("s-f8")),
+        #"toggle breakpoint": R(Key("c-f8")),
+        #"view breakpoints": R(Key("cs-f8,cs-f8")),
+        #"continue": R(Key("f9")),
+
+        # window navigation
+
     }
     extras = [
         Dictation("text"),
@@ -134,6 +162,6 @@ class JetbrainsRule(MergeRule):
 
 def get_rule():
     details = RuleDetails(
-                          executable=["idea", "idea64", "studio64", "pycharm", "rider64", "clion64"],
+                          executable=["idea", "idea64", "studio64", "pycharm", "rider64", "clion64", "webstorm", "webstorm64"],
                           ccrtype=CCRType.APP)
     return JetbrainsRule, details

@@ -1,6 +1,7 @@
 @echo off
-echo Runnig DNS/DPI from Dragonfly CLI with Natlink.
+echo Running DNS/DPI from Dragonfly CLI with Natlink.
 timeout /t 20
+
 set currentpath=%~dp0
 
 TITLE Caster: Status Window

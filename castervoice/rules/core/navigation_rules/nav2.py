@@ -1,4 +1,4 @@
-from dragonfly import Function, Repeat, Dictation, Choice, MappingRule
+from dragonfly import Function, Repeat, Dictation, Choice, MappingRule, AppContext, ContextAction
 
 from castervoice.lib.actions import Key, Mouse
 from castervoice.lib import navigation, utilities
@@ -28,6 +28,17 @@ class NavigationNon(MappingRule):
                 blocking=False),
         "erase multi clipboard":
             R(Function(navigation.erase_multi_clipboard)),
+        "undo [repeat <nnavi10>]":
+            R(Key("c-z"))*Repeat(extra="nnavi10"),
+        "redo [repeat <nnavi10>]":
+            R(
+                ContextAction(default=Key("c-y")*Repeat(extra="nnavi10"),
+                              actions=[
+                                  (AppContext(executable=["rstudio", "foxitreader"]),
+                                   Key("cs-z")*Repeat(extra="nnavi10")),
+                              ])),
+        "shift click":
+            R(Key("shift:down") + Mouse("left") + Key("shift:up")),
         "find":
             R(Key("c-f")),
         "find next [<n>]":
@@ -124,6 +135,7 @@ class NavigationNon(MappingRule):
         IntegerRefST("function_key", 1, 13),
         IntegerRefST("n", 1, 50),
         IntegerRefST("nnavi500", 1, 5000),
+        IntegerRefST("nnavi10", 1, 10),
         Choice("time_in_seconds", {
             "super slow": 5,
             "slow": 2,

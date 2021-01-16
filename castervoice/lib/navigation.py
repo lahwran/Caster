@@ -28,7 +28,7 @@ initialize_clipboard()
 def mouse_alternates(mode, monitor=1, rough=True):
     args = []
 
-    if mode == "legion" and not utilities.window_exists(None, "legiongrid"):
+    if mode == "legion" and not utilities.window_exists("legiongrid", None):
         from castervoice.asynch.mouse.legion import LegionScanner
         r = monitors[int(monitor) - 1].rectangle
         bbox = [
@@ -45,19 +45,19 @@ def mouse_alternates(mode, monitor=1, rough=True):
             settings.settings(["paths", "LEGION_PATH"]), "-t", tscan[0], "-m",
             str(monitor)
         ]
-    elif mode == "rainbow" and not utilities.window_exists(None, "rainbowgrid"):
+    elif mode == "rainbow" and not utilities.window_exists("rainbowgrid", None):
         args = [
             settings.settings(["paths", "PYTHONW"]),
             settings.settings(["paths", "RAINBOW_PATH"]), "-g", "r", "-m",
             str(monitor)
         ]
-    elif mode == "douglas" and not utilities.window_exists(None, "douglasgrid"):
+    elif mode == "douglas" and not utilities.window_exists("douglasgrid", None):
         args = [
             settings.settings(["paths", "PYTHONW"]),
             settings.settings(["paths", "DOUGLAS_PATH"]), "-g", "d", "-m",
             str(monitor)
         ]
-    elif mode == "sudoku" and not utilities.window_exists(None, "sudokugrid"):
+    elif mode == "sudoku" and not utilities.window_exists("sudokugrid", None):
         args = [
             settings.settings(["paths", "PYTHONW"]),
             settings.settings(["paths", "SUDOKU_PATH"]), "-g", "s", "-m",
@@ -170,11 +170,6 @@ def erase_multi_clipboard():
                              settings.settings([u'paths', u'SAVED_CLIPBOARD_PATH']))
 
 
-def volume_control(n, volume_mode):
-    for i in range(0, int(n)):
-        Key("volume" + str(volume_mode)).execute()
-
-
 def kill_grids_and_wait():
     window_title = utilities.get_active_window_title()
     if (window_title == settings.RAINBOW_TITLE or window_title == settings.DOUGLAS_TITLE
@@ -279,5 +274,6 @@ actions = {
     "copy": "c-c",
     "cut": "c-x",
     "paste": "c-v",
-    "delete": "backspace"
+    "delete": "backspace",
+    "comment": "c-slash",
 }
